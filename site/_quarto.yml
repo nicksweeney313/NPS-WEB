@@ -1,0 +1,25 @@
+project:
+  type: website
+  resources:
+  - assets/
+  - CNAME
+  output-dir: _site
+
+website:
+  title: "Nicholas P. Sweeney"
+  navbar:
+    left:
+      - text: "About"
+        href: index.qmd
+      - text: "Publications"
+        href: publications.qmd
+      - text: "CV"
+        href: cv.qmd
+      - text: "Contact"
+        href: contact.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false

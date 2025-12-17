@@ -1,0 +1,221 @@
+---
+title: "Publications"
+format:
+  html:
+    toc: false
+---
+
+<div class="card-lite">
+  <strong>Journal articles</strong> and related outputs. Click the column headers to sort.
+</div>
+
+<div id="pubs"></div>
+
+<script>
+(async function () {
+  const container = document.getElementById("pubs");
+  const url = "/publications.json";
+
+  function escapeText(s) {
+    return String(s ?? "");
+  }
+
+  function normDate(d) {
+    const x = String(d ?? "").trim();
+    return x.length ? x : "0000-00-00";
+  }
+
+  function fmtDate(d) {
+    const x = String(d ?? "").trim();
+    if (!x) return "";
+    const dt = new Date(x);
+    if (isNaN(dt.getTime())) return x;
+    return dt.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+  }
+
+  function compare(a, b, key, dir) {
+    let av = a[key] ?? "";
+    let bv = b[key] ?? "";
+
+    if (key === "date") {
+      av = normDate(av);
+      bv = normDate(bv);
+    } else {
+      av = String(av).toLowerCase();
+      bv = String(bv).toLowerCase();
+    }
+
+    const cmp = av < bv ? -1 : av > bv ? 1 : 0;
+    return dir === "asc" ? cmp : -cmp;
+  }
+
+  try {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`Could not load ${url} (${res.status})`);
+    const data = await res.json();
+
+    let pubs = (data || [])
+      .filter(d => (d.keywords || []).includes("publication"))
+      .map(d => ({
+        date: d.date || d.published || d.publication_date || "",
+        title: d.title || "",
+        authors: (d.authors || []).join(", "),
+        venue: d.venue || d.journal || "",
+        year: d.year || (String(d.date || "").slice(0,4) || ""),
+        doi_url: d.doi_url || d.doi || ""
+      }));
+
+    if (!pubs.length) {
+      container.textContent = "No publications found.";
+      return;
+    }
+
+    let sortState = { key: "date", dir: "desc" };
+
+    // Build table skeleton (DOM, not innerHTML)
+    const wrap = document.createElement("div");
+    wrap.className = "pubs-table-wrap";
+
+    const table = document.createElement("table");
+    table.className = "pubs-table";
+
+    const thead = document.createElement("thead");
+    const headRow = document.createElement("tr");
+
+    function makeSortableTh(label, key) {
+      const th = document.createElement("th");
+      th.className = "pubs-th";
+      th.tabIndex = 0;
+      th.setAttribute("role", "button");
+      th.dataset.key = key;
+      th.textContent = label;
+
+      const toggle = () => {
+        if (sortState.key === key) {
+          sortState.dir = sortState.dir === "asc" ? "desc" : "asc";
+        } else {
+          sortState.key = key;
+          sortState.dir = key === "date" ? "desc" : "asc";
+        }
+        renderBody();
+        renderHeadIndicators();
+      };
+
+      th.addEventListener("click", toggle);
+      th.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggle();
+        }
+      });
+
+      return th;
+    }
+
+    const thDate  = makeSortableTh("Date", "date");
+    const thTitle = makeSortableTh("Title", "title");
+
+    const thOutlet = document.createElement("th");
+    thOutlet.textContent = "Outlet";
+
+    const thLinks = document.createElement("th");
+    thLinks.textContent = "Links";
+
+    headRow.appendChild(thDate);
+    headRow.appendChild(thTitle);
+    headRow.appendChild(thOutlet);
+    headRow.appendChild(thLinks);
+    thead.appendChild(headRow);
+
+    const tbody = document.createElement("tbody");
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    container.innerHTML = "";
+    container.appendChild(wrap);
+
+    function renderHeadIndicators() {
+      [thDate, thTitle].forEach(th => {
+        const key = th.dataset.key;
+        const base = key === "date" ? "Date" : "Title";
+        const active = sortState.key === key;
+        th.classList.toggle("is-active", active);
+        th.textContent = base + (active ? (sortState.dir === "asc" ? " ▲" : " ▼") : "");
+      });
+    }
+
+    function renderBody() {
+      pubs.sort((a, b) => compare(a, b, sortState.key, sortState.dir));
+      tbody.innerHTML = "";
+
+      for (const p of pubs) {
+        const tr = document.createElement("tr");
+
+        const tdDate = document.createElement("td");
+        tdDate.className = "pubs-date";
+        tdDate.textContent = fmtDate(p.date);
+
+        const tdTitle = document.createElement("td");
+        tdTitle.className = "pubs-title";
+
+        const tDiv = document.createElement("div");
+        tDiv.className = "pubs-title-text";
+        tDiv.textContent = escapeText(p.title);
+
+        tdTitle.appendChild(tDiv);
+
+        if (p.authors) {
+          const aDiv = document.createElement("div");
+          aDiv.className = "pubs-authors";
+          aDiv.textContent = escapeText(p.authors);
+          tdTitle.appendChild(aDiv);
+        }
+
+        const tdOutlet = document.createElement("td");
+        tdOutlet.className = "pubs-outlet";
+        tdOutlet.textContent = [p.venue, p.year].filter(Boolean).join(" • ");
+
+        const tdLinks = document.createElement("td");
+        tdLinks.className = "pubs-links";
+        const doi = String(p.doi_url || "").trim();
+        if (doi) {
+          const a = document.createElement("a");
+          a.href = doi;
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.textContent = "DOI";
+          tdLinks.appendChild(a);
+        }
+
+        tr.appendChild(tdDate);
+        tr.appendChild(tdTitle);
+        tr.appendChild(tdOutlet);
+        tr.appendChild(tdLinks);
+        tbody.appendChild(tr);
+      }
+    }
+
+    renderBody();
+    renderHeadIndicators();
+
+  } catch (err) {
+    container.textContent = `Error: ${err.message}`;
+  }
+})();
+</script>
+
+<style>
+.pubs-table-wrap { overflow-x: auto; margin-top: 1rem; }
+.pubs-table { width: 100%; border-collapse: collapse; }
+.pubs-table th, .pubs-table td { padding: .75rem .8rem; vertical-align: top; border-bottom: 1px solid rgba(0,0,0,.08); }
+.pubs-table thead th { font-weight: 600; text-align: left; white-space: nowrap; }
+
+.pubs-th { cursor: pointer; user-select: none; }
+.pubs-th.is-active { text-decoration: underline; }
+
+.pubs-date { white-space: nowrap; width: 1%; }
+.pubs-title-text { font-weight: 600; }
+.pubs-authors { margin-top: .2rem; font-size: .92em; opacity: .8; }
+.pubs-links a { white-space: nowrap; }
+</style>

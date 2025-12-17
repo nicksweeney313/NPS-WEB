@@ -1,0 +1,45 @@
+---
+title: "Nicholas P. Sweeney"
+format:
+  html:
+    toc: false
+---
+
+## Economic geography · Regional inequalities · Institutions
+
+::: {.bio-card}
+```{=html}
+<img
+  src="assets/DSC_1243.JPG"
+  srcset="assets/DSC_1243.JPG 1x, assets/DSC_1243.JPG 2x"
+  alt="Nicholas P. Sweeney"
+  class="bio-photo"
+  loading="eager"
+  decoding="async"
+/>
+```
+
+::: {.bio-text}
+## Bio {.bio-title}
+
+*Nicholas P. Sweeney* is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School.
+
+His research specialises in *XXX*.
+:::
+:::
+
+
+
+### Research interests
+- Multi-level governance and decentraliastion
+
+### Research interests
+- Multi-level governance and decentraliastion
+- Spatial inequalities and local economic development
+- Political (dis)engagement in declining places
+- Mobility, access to services, and health inequalities
+
+### Methods
+- Causal inference in applied microeconometrics (e.g. difference-in-differences, matching, IV)
+- Spatial data and geospatial analysis (QGIS / GIS workflows)
+- Reproducible research in **R** and **Python**
