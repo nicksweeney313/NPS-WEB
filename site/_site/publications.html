@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Publications – Nicholas P. Sweeney</title>
+<title>Articles – Nicholas P. Sweeney</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -96,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./publications.html" aria-current="page"> 
-<span class="menu-text">Publications</span></a>
+<span class="menu-text">Articles</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html"> 
@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Publications</h1>
+<h1 class="title">Articles</h1>
 </div>
 
 
@@ -140,16 +140,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="card-lite">
-<p><strong>Journal articles</strong> and related outputs. Click the column headers to sort.</p>
-</div>
 <div id="pubs">
 
 </div>
 <script>
 (async function () {
   const container = document.getElementById("pubs");
-  const url = "/publications.json";
+  const url = "./publications.json";
 
   function escapeText(s) {
     return String(s ?? "");
@@ -190,15 +187,18 @@ ul.task-list li input[type="checkbox"] {
     const data = await res.json();
 
     let pubs = (data || [])
-      .filter(d => (d.keywords || []).includes("publication"))
-      .map(d => ({
-        date: d.date || d.published || d.publication_date || "",
-        title: d.title || "",
-        authors: (d.authors || []).join(", "),
-        venue: d.venue || d.journal || "",
-        year: d.year || (String(d.date || "").slice(0,4) || ""),
-        doi_url: d.doi_url || d.doi || ""
-      }));
+      .map(d => {
+        const kws = Array.isArray(d.keywords) ? d.keywords : [];
+        return ({
+          date: d.date || d.published || d.publication_date || "",
+          title: d.title || "",
+          authors: (d.authors || []).join(", "),
+          journal: d.venue || d.journal || "",
+          keywords: kws.join(", "),
+          note: d.note || "",
+          doi_url: d.doi_url || d.doi || ""
+        });
+      });
 
     if (!pubs.length) {
       container.textContent = "No publications found.";
@@ -207,7 +207,6 @@ ul.task-list li input[type="checkbox"] {
 
     let sortState = { key: "date", dir: "desc" };
 
-    // Build table skeleton (DOM, not innerHTML)
     const wrap = document.createElement("div");
     wrap.className = "pubs-table-wrap";
 
@@ -247,18 +246,20 @@ ul.task-list li input[type="checkbox"] {
       return th;
     }
 
-    const thDate  = makeSortableTh("Date", "date");
-    const thTitle = makeSortableTh("Title", "title");
-
-    const thOutlet = document.createElement("th");
-    thOutlet.textContent = "Outlet";
+    const thDate     = makeSortableTh("Date", "date");
+    const thTitle    = makeSortableTh("Title", "title");
+    const thJournal  = makeSortableTh("Journal", "journal");
+    const thKeywords = makeSortableTh("Keywords", "keywords");
+    const thNotes    = makeSortableTh("Notes", "note");
 
     const thLinks = document.createElement("th");
-    thLinks.textContent = "Links";
+    thLinks.textContent = "Link";
 
     headRow.appendChild(thDate);
     headRow.appendChild(thTitle);
-    headRow.appendChild(thOutlet);
+    headRow.appendChild(thJournal);
+    headRow.appendChild(thKeywords);
+    headRow.appendChild(thNotes);
     headRow.appendChild(thLinks);
     thead.appendChild(headRow);
 
@@ -271,13 +272,20 @@ ul.task-list li input[type="checkbox"] {
     container.appendChild(wrap);
 
     function renderHeadIndicators() {
-      [thDate, thTitle].forEach(th => {
+      const map = new Map([
+        [thDate, "Date"],
+        [thTitle, "Title"],
+        [thJournal, "Journal"],
+        [thKeywords, "Keywords"],
+        [thNotes, "Notes"],
+      ]);
+
+      for (const [th, base] of map.entries()) {
         const key = th.dataset.key;
-        const base = key === "date" ? "Date" : "Title";
         const active = sortState.key === key;
         th.classList.toggle("is-active", active);
         th.textContent = base + (active ? (sortState.dir === "asc" ? " ▲" : " ▼") : "");
-      });
+      }
     }
 
     function renderBody() {
@@ -297,7 +305,6 @@ ul.task-list li input[type="checkbox"] {
         const tDiv = document.createElement("div");
         tDiv.className = "pubs-title-text";
         tDiv.textContent = escapeText(p.title);
-
         tdTitle.appendChild(tDiv);
 
         if (p.authors) {
@@ -307,9 +314,35 @@ ul.task-list li input[type="checkbox"] {
           tdTitle.appendChild(aDiv);
         }
 
-        const tdOutlet = document.createElement("td");
-        tdOutlet.className = "pubs-outlet";
-        tdOutlet.textContent = [p.venue, p.year].filter(Boolean).join(" • ");
+        const tdJournal = document.createElement("td");
+        tdJournal.className = "pubs-journal";
+        tdJournal.textContent = escapeText(p.journal);
+
+        const tdKeywords = document.createElement("td");
+        tdKeywords.className = "pubs-keywords";
+
+        const kwList = String(p.keywords || "")
+          .split(",")
+          .map(s => s.trim())
+          .filter(Boolean);
+
+        if (kwList.length) {
+          const chipWrap = document.createElement("div");
+          chipWrap.className = "pubs-chips";
+          for (const kw of kwList) {
+            const chip = document.createElement("span");
+            chip.className = "pubs-chip";
+            chip.textContent = kw;
+            chipWrap.appendChild(chip);
+          }
+          tdKeywords.appendChild(chipWrap);
+        } else {
+          tdKeywords.textContent = "";
+        }
+
+        const tdNotes = document.createElement("td");
+        tdNotes.className = "pubs-notes";
+        tdNotes.textContent = escapeText(p.note);
 
         const tdLinks = document.createElement("td");
         tdLinks.className = "pubs-links";
@@ -325,7 +358,9 @@ ul.task-list li input[type="checkbox"] {
 
         tr.appendChild(tdDate);
         tr.appendChild(tdTitle);
-        tr.appendChild(tdOutlet);
+        tr.appendChild(tdJournal);
+        tr.appendChild(tdKeywords);
+        tr.appendChild(tdNotes);
         tr.appendChild(tdLinks);
         tbody.appendChild(tr);
       }
@@ -341,9 +376,18 @@ ul.task-list li input[type="checkbox"] {
 </script>
 <style>
 .pubs-table-wrap { overflow-x: auto; margin-top: 1rem; }
+
 .pubs-table { width: 100%; border-collapse: collapse; }
-.pubs-table th, .pubs-table td { padding: .75rem .8rem; vertical-align: top; border-bottom: 1px solid rgba(0,0,0,.08); }
-.pubs-table thead th { font-weight: 600; text-align: left; white-space: nowrap; }
+.pubs-table th, .pubs-table td {
+  padding: .75rem .8rem;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+.pubs-table thead th {
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
 
 .pubs-th { cursor: pointer; user-select: none; }
 .pubs-th.is-active { text-decoration: underline; }
@@ -352,6 +396,30 @@ ul.task-list li input[type="checkbox"] {
 .pubs-title-text { font-weight: 600; }
 .pubs-authors { margin-top: .2rem; font-size: .92em; opacity: .8; }
 .pubs-links a { white-space: nowrap; }
+
+/* Keyword chips */
+.pubs-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+.pubs-chip{
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.65);
+  font-size: .9em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Notes */
+.pubs-notes{
+  white-space: nowrap;
+  opacity: .85;
+}
 </style>
 
 

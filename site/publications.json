@@ -1,36 +1,84 @@
 [
   {
-    "id": "sweeney2025101016jsocscimed2025118763",
-    "title": "Devolution, health and health inequalities in Greater Manchester",
-    "year": 2025,
-    "date": "2025-11-22",
-    "venue": "Social Science \\& Medicine",
-    "doi": "10.1016/j.socscimed.2025.118763",
-    "doi_url": "https://doi.org/10.1016/j.socscimed.2025.118763",
-    "cited_by_count": 0,
-    "keywords": [
-      "publication"
-    ],
+    "id": "sweeney2025devolution-health",
+    "type": "article",
+    "title": "Devolution, Health and Health Inequalities in Greater Manchester",
     "authors": [
-      "Nicholas Patrick Sweeney"
+      "Sweeney, Nicholas Patrick"
     ],
-    "type": "article"
+    "venue": "Social Science & Medicine",
+    "year": "2025",
+    "date": "2025-11-22",
+    "doi_url": "https://doi.org/10.1016/j.socscimed.2025.118763",
+    "note": "Published",
+    "keywords": [
+      "Multi-level governance",
+      "Health"
+    ]
   },
   {
-    "id": "sweeney2025101016jpolgeo2025103386",
+    "id": "sweeney2025devolution-demo",
+    "type": "article",
     "title": "Devolution and democratic engagement in England",
-    "year": 2025,
-    "date": "2025-07-01",
-    "venue": "Political Geography",
-    "doi": "10.1016/j.polgeo.2025.103386",
-    "doi_url": "https://doi.org/10.1016/j.polgeo.2025.103386",
-    "cited_by_count": 0,
-    "keywords": [
-      "publication"
-    ],
     "authors": [
-      "Nicholas Patrick Sweeney"
+      "Sweeney, Nicholas Patrick"
     ],
-    "type": "article"
+    "venue": "Political Geography",
+    "year": "2025",
+    "date": "2025-06-28",
+    "doi_url": "https://doi.org/10.1016/j.polgeo.2025.103386",
+    "note": "Published",
+    "keywords": [
+      "Multi-level governance",
+      "Political engagement"
+    ]
+  },
+  {
+    "id": "sweeney2025devolution-growth",
+    "type": "article",
+    "title": "Devolution and Economic Growth in English City Regions",
+    "authors": [
+      "Sweeney, Nicholas Patrick"
+    ],
+    "venue": "Urban Studies",
+    "year": "",
+    "date": "",
+    "doi_url": "",
+    "note": "Forthcoming",
+    "keywords": [
+      "Multi-level governance",
+      "economic growth"
+    ]
+  },
+  {
+    "id": "sweeney2025devolution-MSAs",
+    "type": "article",
+    "title": "Challenging the S of Mayoral Strategic Authorities: Standardisation Over Strategy?",
+    "authors": [
+      "Sweeney, Nicholas Patrick"
+    ],
+    "venue": "The Political Quarterly",
+    "year": "",
+    "date": "",
+    "doi_url": "",
+    "note": "Forthcoming",
+    "keywords": [
+      "Multi-level governance",
+      "strategy"
+    ]
+  },
+  {
+    "id": "sweeney2025spatvar",
+    "type": "article",
+    "title": "Spatial Variation in Mobility Across England: Evidence from 21 Million Geo-coded Credit-Card Flows",
+    "authors": [
+      "Sweeney, Nicholas Patrick"
+    ],
+    "venue": "Spatial Economic Analysis",
+    "year": "",
+    "date": "",
+    "doi_url": "",
+    "note": "2nd R&R submitted",
+    "keywords": []
   }
 ]

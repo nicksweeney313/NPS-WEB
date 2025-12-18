@@ -3,6 +3,7 @@ project:
   resources:
   - assets/
   - CNAME
+  - publications.json
   output-dir: _site
 
 website:
@@ -11,7 +12,7 @@ website:
     left:
       - text: "About"
         href: index.qmd
-      - text: "Publications"
+      - text: "Articles"
         href: publications.qmd
       - text: "CV"
         href: cv.qmd
