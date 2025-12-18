@@ -148,7 +148,9 @@ ul.task-list li input[type="checkbox"] {
   const container = document.getElementById("pubs");
   const url = "./publications.json";
 
-  function escapeText(s) { return String(s ?? ""); }
+  function escapeText(s) {
+    return String(s ?? "");
+  }
 
   function normDate(d) {
     const x = String(d ?? "").trim();
@@ -166,6 +168,7 @@ ul.task-list li input[type="checkbox"] {
   function compare(a, b, key, dir) {
     let av = a[key] ?? "";
     let bv = b[key] ?? "";
+
     if (key === "date") {
       av = normDate(av);
       bv = normDate(bv);
@@ -173,17 +176,9 @@ ul.task-list li input[type="checkbox"] {
       av = String(av).toLowerCase();
       bv = String(bv).toLowerCase();
     }
+
     const cmp = av < bv ? -1 : av > bv ? 1 : 0;
     return dir === "asc" ? cmp : -cmp;
-  }
-
-  // Search across all columns (including DOI URL)
-  function matchesQuery(p, q) {
-    if (!q) return true;
-    const hay = [
-      p.date, p.title, p.authors, p.journal, p.keywords, p.note, p.doi_url
-    ].join(" ").toLowerCase();
-    return hay.includes(q);
   }
 
   try {
@@ -191,47 +186,27 @@ ul.task-list li input[type="checkbox"] {
     if (!res.ok) throw new Error(`Could not load ${url} (${res.status})`);
     const data = await res.json();
 
-    const pubsAll = (data || []).map(d => {
-      const kws = Array.isArray(d.keywords) ? d.keywords : [];
-      return ({
-        date: d.date || d.published || d.publication_date || "",
-        title: d.title || "",
-        authors: (d.authors || []).join(", "),
-        journal: d.venue || d.journal || "",
-        keywords: kws.join(", "),
-        note: d.note || "",
-        doi_url: d.doi_url || d.doi || ""
+    let pubs = (data || [])
+      .map(d => {
+        const kws = Array.isArray(d.keywords) ? d.keywords : [];
+        return ({
+          date: d.date || d.published || d.publication_date || "",
+          title: d.title || "",
+          authors: (d.authors || []).join(", "),
+          journal: d.venue || d.journal || "",
+          keywords: kws.join(", "),
+          note: d.note || "",
+          doi_url: d.doi_url || d.doi || ""
+        });
       });
-    });
 
-    if (!pubsAll.length) {
+    if (!pubs.length) {
       container.textContent = "No publications found.";
       return;
     }
 
-    let pubsView = pubsAll.slice();
     let sortState = { key: "date", dir: "desc" };
-    let query = "";
 
-    // --- UI: search bar + meta ---
-    const topbar = document.createElement("div");
-    topbar.className = "pubs-topbar";
-
-    const search = document.createElement("input");
-    search.className = "pubs-search";
-    search.type = "search";
-    search.placeholder = "Search title, authors, journal, keywords, notes…";
-    search.autocomplete = "off";
-    search.spellcheck = false;
-
-    const meta = document.createElement("div");
-    meta.className = "pubs-meta";
-    meta.textContent = "";
-
-    topbar.appendChild(search);
-    topbar.appendChild(meta);
-
-    // --- Table skeleton ---
     const wrap = document.createElement("div");
     wrap.className = "pubs-table-wrap";
 
@@ -286,7 +261,6 @@ ul.task-list li input[type="checkbox"] {
     headRow.appendChild(thKeywords);
     headRow.appendChild(thNotes);
     headRow.appendChild(thLinks);
-
     thead.appendChild(headRow);
 
     const tbody = document.createElement("tbody");
@@ -294,9 +268,7 @@ ul.task-list li input[type="checkbox"] {
     table.appendChild(thead);
     table.appendChild(tbody);
     wrap.appendChild(table);
-
     container.innerHTML = "";
-    container.appendChild(topbar);
     container.appendChild(wrap);
 
     function renderHeadIndicators() {
@@ -316,29 +288,11 @@ ul.task-list li input[type="checkbox"] {
       }
     }
 
-    function applyFilter() {
-      const q = query.trim().toLowerCase();
-      pubsView = pubsAll.filter(p => matchesQuery(p, q));
-      meta.textContent = `${pubsView.length} item${pubsView.length === 1 ? "" : "s"}`;
-    }
-
     function renderBody() {
-      applyFilter();
-      pubsView.sort((a, b) => compare(a, b, sortState.key, sortState.dir));
+      pubs.sort((a, b) => compare(a, b, sortState.key, sortState.dir));
       tbody.innerHTML = "";
 
-      if (!pubsView.length) {
-        const tr = document.createElement("tr");
-        const td = document.createElement("td");
-        td.colSpan = 6;
-        td.className = "pubs-empty";
-        td.textContent = "No matches.";
-        tr.appendChild(td);
-        tbody.appendChild(tr);
-        return;
-      }
-
-      for (const p of pubsView) {
+      for (const p of pubs) {
         const tr = document.createElement("tr");
 
         const tdDate = document.createElement("td");
@@ -412,14 +366,6 @@ ul.task-list li input[type="checkbox"] {
       }
     }
 
-    // Wire search
-    search.addEventListener("input", () => {
-      query = search.value || "";
-      renderBody();
-      renderHeadIndicators();
-    });
-
-    // Initial render
     renderBody();
     renderHeadIndicators();
 
@@ -429,32 +375,7 @@ ul.task-list li input[type="checkbox"] {
 })();
 </script>
 <style>
-/* Search bar */
-.pubs-topbar{
-  display: flex;
-  gap: .75rem;
-  align-items: center;
-  justify-content: space-between;
-  margin: .75rem 0 1rem;
-}
-.pubs-search{
-  width: min(520px, 100%);
-  padding: .6rem .75rem;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.8);
-  outline: none;
-}
-.pubs-search:focus{
-  border-color: rgba(0,0,0,.22);
-}
-.pubs-meta{
-  opacity: .75;
-  font-size: .95em;
-  white-space: nowrap;
-}
-
-.pubs-table-wrap { overflow-x: auto; margin-top: .25rem; }
+.pubs-table-wrap { overflow-x: auto; margin-top: 1rem; }
 
 .pubs-table { width: 100%; border-collapse: collapse; }
 .pubs-table th, .pubs-table td {
@@ -475,11 +396,6 @@ ul.task-list li input[type="checkbox"] {
 .pubs-title-text { font-weight: 600; }
 .pubs-authors { margin-top: .2rem; font-size: .92em; opacity: .8; }
 .pubs-links a { white-space: nowrap; }
-
-.pubs-empty{
-  padding: 1rem .8rem;
-  opacity: .8;
-}
 
 /* Keyword chips */
 .pubs-chips{
