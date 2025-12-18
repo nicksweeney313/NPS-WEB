@@ -1,15 +1,7 @@
 /* =========================
    Nick Sweeney — clean academic theme
-   Mobile-first, Quarto/Bootstrap-friendly
+   Quarto/Bootstrap-friendly + fixes bottom “band” for good
    ========================= */
-
-html, body{
-  height: 100%;
-}
-
-body{
-  min-height: 100vh;
-}
 
 /* ---- Design tokens ---- */
 :root{
@@ -19,36 +11,83 @@ body{
   --muted: #4b5563;
   --border: rgba(17, 24, 39, 0.10);
 
-  --accent: #2563eb;             /* crisp blue */
+  --accent: #2563eb;
   --shadow: 0 10px 30px rgba(17, 24, 39, 0.10);
 
   --radius: 16px;
   --maxw: 900px;
 }
 
+/* =========================
+   1) Global layout + background (no overscroll bar / no empty band)
+   ========================= */
 
-html{ scroll-behavior: smooth; }
+/* Put the background on html so overscroll never reveals a “flat” area */
+html{
+  scroll-behavior: smooth;
+  min-height: 100%;
+  background: var(--bg);
+}
 
-body{
+/* Fixed gradient layer: prevents bottom bands/vignettes on short pages */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background:
     radial-gradient(1100px 600px at 12% -10%, rgba(37,99,235,0.16), transparent 55%),
     radial-gradient(900px 500px at 88% 0%, rgba(99,102,241,0.12), transparent 55%),
-    linear-gradient(180deg, rgba(255,255,255,0.40), rgba(255,255,255,0.00)),
-    var(--bg);
+    linear-gradient(180deg, rgba(255,255,255,0.40), rgba(255,255,255,0.00));
+}
+
+/* Make the whole Quarto page a full-height flex column so short pages
+   don’t leave a “blank” viewport area at the bottom */
+body{
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+
+  background: transparent; /* IMPORTANT: let html background show through */
   color: var(--text);
   line-height: 1.75;
   font-size: 17px;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
                Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  overscroll-behavior-y: none;
 }
 
+/* Ensure Quarto’s wrappers stretch to fill the viewport */
+#quarto-content{
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: transparent !important;
+}
 
-/* ---- Layout ---- */
+.page-columns,
+.content{
+  background: transparent !important;
+}
+
+/* main content grows to fill remaining height */
 main.content{
+  flex: 1 0 auto;
   padding: 2.25rem 1.25rem 4.5rem;
 }
 
-/* ---- Type ---- */
+/* Footer sits at the bottom without creating a coloured band */
+#quarto-footer, footer, .footer{
+  margin-top: auto;
+  background: transparent !important;
+}
+
+/* =========================
+   2) Typography
+   ========================= */
 p{
   margin: 0 0 1.05rem;
   color: rgba(22, 24, 29, 0.92);
@@ -83,14 +122,14 @@ h3{
   color: var(--muted);
 }
 
-/* ---- Navbar polish (Quarto/Bootstrap) ---- */
-/* Fix the "background runs out" seam: remove translucent/blur navbar */
+/* =========================
+   3) Navbar polish (Quarto/Bootstrap)
+   ========================= */
 .navbar{
-  background: #eef4ff !important;   /* match your page bg */
+  background: var(--bg) !important;      /* match base background */
   backdrop-filter: none !important;
   border-bottom: 1px solid var(--border);
 }
-
 
 .navbar-brand{
   font-weight: 650;
@@ -112,17 +151,14 @@ h3{
   color: rgba(22,24,29,0.95) !important;
 }
 
-#quarto-content, .page-columns, .content{
-  background: transparent !important;
-}
-
-
-/* ---- Lists ---- */
+/* =========================
+   4) Lists
+   ========================= */
 ul, ol{ padding-left: 1.2rem; }
 li{ margin-bottom: 0.35rem; }
 
 /* =========================
-   Bio card (image + text)
+   5) Bio card (image + text)
    ========================= */
 .bio-card{
   display: grid;
@@ -139,7 +175,6 @@ li{ margin-bottom: 0.35rem; }
   box-shadow: var(--shadow);
 }
 
-/* Keep the photo crisp on Retina/Safari by avoiding fractional scaling */
 .bio-photo{
   width: 180px;
   height: 180px;
@@ -157,7 +192,7 @@ li{ margin-bottom: 0.35rem; }
 .bio-text p:last-child{ margin-bottom: 0; }
 
 /* =========================
-   Utility cards + pub blocks
+   6) Utility cards + pubs
    ========================= */
 .card-lite{
   background: var(--panel);
@@ -180,8 +215,10 @@ li{ margin-bottom: 0.35rem; }
 .pub .meta{ color: var(--muted); font-size: 0.98rem; }
 .pub .links a{ margin-right: 0.65rem; font-weight: 650; }
 
-/* CV iframe */
-iframe{
+/* =========================
+   7) CV embeds
+   ========================= */
+iframe, object, embed{
   width: 100%;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -190,7 +227,7 @@ iframe{
 }
 
 /* =========================
-   Mobile responsiveness
+   8) Mobile responsiveness
    ========================= */
 @media (max-width: 750px){
   body{ font-size: 16px; }
@@ -203,7 +240,6 @@ iframe{
     padding: 1.05rem;
   }
 
-  /* keep fixed size to stay crisp; align nicely on small screens */
   .bio-photo{
     width: 150px;
     height: 150px;

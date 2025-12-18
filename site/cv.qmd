@@ -8,21 +8,23 @@ format:
     title-block-style: plain
 ---
 
-View my CV below, or download the PDF for printing/sharing.
-
-<div class="cv-actions">
-  <a class="cv-btn" href="./assets/cv.pdf" download>Download CV (PDF)</a>
-  <a class="cv-link" href="./assets/cv.pdf" target="_blank" rel="noreferrer">Open in new tab</a>
-</div>
+<p class="cv-lede">
+  View my CV below, or
+  <a class="cv-inline" href="./assets/cv.pdf" target="_blank" rel="noreferrer">open in a new tab</a>,
+  or
+  <a class="cv-inline" href="./assets/cv.pdf" download>download the PDF</a>
+  for printing/sharing.
+</p>
 
 <div class="cv-box">
   <object data="./assets/cv.pdf" type="application/pdf" class="cv-embed">
     <p class="cv-fallback">
       Your browser can’t display the PDF inline.
-      <a href="./assets/cv.pdf" target="_blank" rel="noreferrer">Open the CV PDF</a>.
+      <a class="cv-inline" href="./assets/cv.pdf" target="_blank" rel="noreferrer">Open the CV PDF</a>.
     </p>
   </object>
 </div>
+
 
 <style>
 /* Keep Quarto header spacing reasonable */
