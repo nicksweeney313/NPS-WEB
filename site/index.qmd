@@ -5,25 +5,27 @@ format:
     toc: false
 ---
 
-## Economic geography · Regional inequalities · Institutions
+## Economic geography · Spatial inequalities · Big Data
+### Bio
 
 ::: {.bio-card}
 
+::: {.bio-text}
+*Nicholas P. Sweeney* is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School. His research examines the political and economic drivers of spatial inequality, with a particular focus on the role of institutions, multi-level governance, and place-based policy in England.
+
+Nicholas joined the University of Manchester in 2025 from the University of Cambridge, after submitting his three solo authored papers PhD entitled 'Devolution and Space in England: Empirical Essays on Economic Growth, Democratic Engagement and Health' in under three years. All of these papers were subsequently published in leading journals (Urban Studies, Political Geography, Social Sciences & Medicine -- respectively). 
+
+Nicholas also completed his Masters and Undergraduate studies at the University of Cambridge. Notable achievements include a Distinction in his Masters, with a high mark of 87% in Research Methods, and during his undergraduate where received the most marks in his cohort, and the award for best third-year dissertation.
+:::
+
 <img
-  src="assets/DSC_1243.JPG"
-  srcset="assets/DSC_1243.JPG 1x, assets/DSC_1243.JPG 2x"
+  src="assets/DSC_1243.jpg"
   alt="Nicholas P. Sweeney"
   class="bio-photo"
   loading="eager"
   decoding="async"
 />
 
-::: {.bio-text}
-
-*Nicholas P. Sweeney* is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School.
-
-His research examines the political and economic drivers of spatial inequality, with a particular focus on the role of institutions, multi-level governance, and place-based policy in England.
-:::
 
 :::
 
@@ -34,6 +36,6 @@ His research examines the political and economic drivers of spatial inequality, 
 - Mobility, access to services, and health inequalities  
 
 ### Methods
-- **Causal inference** in applied microeconometrics (difference-in-differences, matching, instrumental variables)  
-- **Spatial analysis** and geospatial data (GIS / QGIS workflows)  
-- **Reproducible research** in *R* and *Python*
+- Causal inference in applied microeconometrics (difference-in-differences, matching, instrumental variables)  
+- Spatial analysis and geospatial data (GIS / QGIS workflows)  
+- Reproducible research in *R* and *Python*

@@ -204,40 +204,57 @@ h3{
    ========================= */
 ul, ol{ padding-left: 1.2rem; }
 li{ margin-bottom: 0.35rem; }
-
-/* =========================
-   5) Bio card (image + text)
-   ========================= */
+/* Bio card: image + text */
+/* Bio card: text left, photo right */
 .bio-card{
   display: grid;
-  grid-template-columns: 190px 1fr;
-  gap: 1.25rem;
-  align-items: start;
-
-  padding: 1.25rem;
-  margin: 1.25rem 0 1.75rem;
-
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 1.75rem;
+  align-items: center;          /* <-- centre both columns vertically */
 }
 
+/* keep text starting at top within its own column */
+.bio-text{ align-self: start; }
+.bio-photo{ align-self: center; }
+
+/* Text block */
+.bio-text{
+  min-width: 0;
+  white-space: normal !important;
+}
+
+.bio-text p{
+  margin: 0 0 1rem;
+  line-height: 1.65;
+}
+
+.bio-text p:first-of-type{
+  font-size: 1.05rem;   /* gentle “lead” */
+}
+
+/* Photo */
 .bio-photo{
-  width: 180px;
-  height: 180px;
+  width: 240px;
+  height: auto;
+  justify-self: end;            /* keeps it snug to the right edge */
+  border-radius: 14px;
   display: block;
-
-  object-fit: cover;
-  border-radius: 18px;
-  border: 1px solid var(--border);
-
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  image-rendering: -webkit-optimize-contrast;
 }
 
-.bio-text p:last-child{ margin-bottom: 0; }
+
+/* Mobile: stack, photo on top */
+@media (max-width: 900px){
+  .bio-card{
+    grid-template-columns: 1fr;
+  }
+  .bio-photo{
+    width: 220px;
+    margin: 0 auto;
+    order: -1;
+  }
+}
+
+
 
 /* =========================
    6) Utility cards + pubs
