@@ -19,7 +19,7 @@ Nicholas also completed his Masters and Undergraduate studies at the University 
 :::
 
 <img
-  src="assets/DSC_1243.jpg"
+  src="assets/DSC_1243.JPG"
   alt="Nicholas P. Sweeney"
   class="bio-photo"
   loading="eager"
