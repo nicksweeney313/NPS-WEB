@@ -10,7 +10,8 @@
     "year": "2025",
     "date": "2025-11-22",
     "doi_url": "https://doi.org/10.1016/j.socscimed.2025.118763",
-    "note": "Published",
+    "note": "",
+    "webnote": "Published",
     "keywords": [
       "Health",
       "Multi-level Governance"
@@ -27,7 +28,8 @@
     "year": "2025",
     "date": "2025-06-28",
     "doi_url": "https://doi.org/10.1016/j.polgeo.2025.103386",
-    "note": "Published",
+    "note": "",
+    "webnote": "Published",
     "keywords": [
       "Political Engagement",
       "Multi-level Governance"
@@ -45,6 +47,7 @@
     "date": "",
     "doi_url": "",
     "note": "Forthcoming",
+    "webnote": "Forthcoming",
     "keywords": [
       "Economic Growth",
       "Multi-level Governance"
@@ -62,6 +65,7 @@
     "date": "",
     "doi_url": "",
     "note": "Forthcoming",
+    "webnote": "Forthcoming",
     "keywords": [
       "Strategy",
       "Multi-level Governance"
@@ -79,6 +83,7 @@
     "date": "",
     "doi_url": "",
     "note": "2nd R&R submitted",
+    "webnote": "2nd R&R submitted",
     "keywords": [
       "Mobility Inequalities",
       "Big Data"

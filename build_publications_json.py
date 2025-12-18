@@ -151,6 +151,7 @@ def parse_bibtex(text: str) -> list[dict]:
             "date": pick_date(fields),
             "doi_url": fix_doi_url(fields.get("doi", "") or fields.get("doi_url", "")),
             "note": clean_tex(fields.get("note", "") or fields.get("pubstate", "")),
+            "webnote": clean_tex(fields.get("webnote", "") or fields.get("pubstate", "")),
             "keywords": tags,
         }
         out.append(item)

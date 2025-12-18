@@ -45,7 +45,7 @@ format:
   function matchesQuery(p, q) {
     if (!q) return true;
     const hay = [
-      p.date, p.title, p.authors, p.journal, p.keywords, p.note, p.doi_url
+      p.date, p.title, p.authors, p.journal, p.keywords, p.webnote, p.doi_url
     ].join(" ").toLowerCase();
     return hay.includes(q);
   }
@@ -63,7 +63,7 @@ format:
         authors: (d.authors || []).join(", "),
         journal: d.venue || d.journal || "",
         keywords: kws.join(", "),
-        note: d.note || "",
+        webnote: d.webnote || "",
         doi_url: d.doi_url || d.doi || ""
       });
     });
@@ -139,7 +139,7 @@ format:
     const thTitle    = makeSortableTh("Title", "title");
     const thJournal  = makeSortableTh("Journal", "journal");
     const thKeywords = makeSortableTh("Keywords", "keywords");
-    const thNotes    = makeSortableTh("Notes", "note");
+    const thNotes    = makeSortableTh("Notes", "webnote");
 
     const thLinks = document.createElement("th");
     thLinks.textContent = "Link";
@@ -252,7 +252,7 @@ format:
 
         const tdNotes = document.createElement("td");
         tdNotes.className = "pubs-notes";
-        tdNotes.textContent = escapeText(p.note);
+        tdNotes.textContent = escapeText(p.webnote);
 
         const tdLinks = document.createElement("td");
         tdLinks.className = "pubs-links";
