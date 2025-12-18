@@ -1,55 +1,59 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is 'main.blg'
-[24] biber-darwin:340> INFO - === Thu Dec 18, 2025, 08:03:31
-[36] Biber.pm:420> INFO - Reading 'main.bcf'
-[57] Biber.pm:991> INFO - Using all citekeys in bib section 0
-[57] Biber.pm:991> INFO - Using all citekeys in bib section 1
-[57] Biber.pm:991> INFO - Using all citekeys in bib section 0
-[57] Biber.pm:991> INFO - Using all citekeys in bib section 2
-[57] Biber.pm:991> INFO - Using all citekeys in bib section 0
-[65] Biber.pm:4463> INFO - Processing section 0
-[73] Biber.pm:4654> INFO - Looking for bibtex file '../bib/publications.bib' for section 0
+[21] biber-darwin:340> INFO - === Thu Dec 18, 2025, 08:06:47
+[27] Biber.pm:420> INFO - Reading 'main.bcf'
+[48] Biber.pm:991> INFO - Using all citekeys in bib section 0
+[48] Biber.pm:991> INFO - Using all citekeys in bib section 1
+[48] Biber.pm:991> INFO - Using all citekeys in bib section 0
+[48] Biber.pm:991> INFO - Using all citekeys in bib section 2
+[48] Biber.pm:991> INFO - Using all citekeys in bib section 0
+[56] Biber.pm:4463> INFO - Processing section 0
+[59] Biber.pm:4654> INFO - Looking for bibtex file '../bib/publications.bib' for section 0
+[60] bibtex.pm:1713> INFO - LaTeX decoding ...
+[62] bibtex.pm:1519> INFO - Found BibTeX data source '../bib/publications.bib'
+[74] Biber.pm:4654> INFO - Looking for bibtex file '../bib/working_papers.bib' for section 0
 [74] bibtex.pm:1713> INFO - LaTeX decoding ...
-[77] bibtex.pm:1519> INFO - Found BibTeX data source '../bib/publications.bib'
-[90] Biber.pm:4654> INFO - Looking for bibtex file '../bib/working_papers.bib' for section 0
-[90] bibtex.pm:1713> INFO - LaTeX decoding ...
-[90] bibtex.pm:1519> INFO - Found BibTeX data source '../bib/working_papers.bib'
-[96] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[96] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[96] Biber.pm:4283> INFO - Sorting list 'dateydnt/global//global/global/global' of type 'entry' with template 'dateydnt' and locale 'en-US'
-[96] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
-[97] Biber.pm:4463> INFO - Processing section 1
-[97] Biber.pm:4654> INFO - Looking for bibtex file '../bib/publications.bib' for section 1
-[104] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[104] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[104] Biber.pm:4283> INFO - Sorting list 'dateydnt/global//global/global/global' of type 'entry' with template 'dateydnt' and locale 'en-US'
-[104] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
-[106] Biber.pm:4463> INFO - Processing section 2
-[106] Biber.pm:4654> INFO - Looking for bibtex file '../bib/working_papers.bib' for section 2
-[109] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[109] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[109] Biber.pm:4283> INFO - Sorting list 'dateydnt/global//global/global/global' of type 'entry' with template 'dateydnt' and locale 'en-US'
-[109] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
-[109] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[111] bbl.pm:779> INFO - Output to main.bbl
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
-[111] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
-[111] Biber.pm:133> INFO - WARNINGS: 20
+[75] bibtex.pm:1519> INFO - Found BibTeX data source '../bib/working_papers.bib'
+[80] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[80] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[80] Biber.pm:4283> INFO - Sorting list 'dateydnt/global//global/global/global' of type 'entry' with template 'dateydnt' and locale 'en-US'
+[80] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[82] Biber.pm:4463> INFO - Processing section 1
+[82] Biber.pm:4654> INFO - Looking for bibtex file '../bib/publications.bib' for section 1
+[91] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[91] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[91] Biber.pm:4283> INFO - Sorting list 'dateydnt/global//global/global/global' of type 'entry' with template 'dateydnt' and locale 'en-US'
+[91] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[92] Biber.pm:4463> INFO - Processing section 2
+[92] Biber.pm:4654> INFO - Looking for bibtex file '../bib/working_papers.bib' for section 2
+[95] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[95] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[95] Biber.pm:4283> INFO - Sorting list 'dateydnt/global//global/global/global' of type 'entry' with template 'dateydnt' and locale 'en-US'
+[95] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[96] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[97] bbl.pm:779> INFO - Output to main.bbl
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'sortdate' in sorting template is not a sortable field
+[98] Biber.pm:131> WARN - Field 'date' in sorting template is not a sortable field
+[98] Biber.pm:133> INFO - WARNINGS: 24
