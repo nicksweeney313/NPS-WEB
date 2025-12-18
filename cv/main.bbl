@@ -1,0 +1,388 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{dateydnt/global//global/global/global}
+    \entry{sweeney2025devolution-MSAs}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{2}
+      \field{journaltitle}{The Political Quarterly}
+      \field{month}{1}
+      \field{note}{Forthcoming}
+      \field{title}{Challenging the S of Mayoral Strategic Authorities: Standardisation Over Strategy?}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{sweeney2025devolution-growth}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{journaltitle}{Urban Studies}
+      \field{month}{1}
+      \field{note}{Forthcoming}
+      \field{title}{Devolution and Economic Growth in English City Regions}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{sweeney2025devolution-demo}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{journaltitle}{Political Geography}
+      \field{month}{8}
+      \field{title}{Devolution and democratic engagement in England}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \true{nocite}
+      \field{pages}{103386}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.polgeo.2025.103386
+      \endverb
+    \endentry
+    \entry{sweeney2025devolution-health}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{extraname}{4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{journaltitle}{Social Science \& Medicine}
+      \field{month}{11}
+      \field{title}{Devolution, Health and Health Inequalities in Greater Manchester}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \true{nocite}
+      \field{pages}{118763}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://10.1016/j.socscimed.2025.118763
+      \endverb
+    \endentry
+    \entry{sweeney2025spatvar}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{extraname}{5}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Spatial Economic Analysis}
+      \field{note}{2nd R\&R submitted}
+      \field{title}{Spatial Variation in Mobility Across England: Evidence from 21 Million Geo-coded Credit-Card Flows}
+      \true{nocite}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{1}
+  \datalist[entry]{dateydnt/global//global/global/global}
+    \entry{sweeney2025devolution-MSAs}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{2}
+      \field{journaltitle}{The Political Quarterly}
+      \field{month}{1}
+      \field{note}{Forthcoming}
+      \field{title}{Challenging the S of Mayoral Strategic Authorities: Standardisation Over Strategy?}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{sweeney2025devolution-growth}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{journaltitle}{Urban Studies}
+      \field{month}{1}
+      \field{note}{Forthcoming}
+      \field{title}{Devolution and Economic Growth in English City Regions}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \true{nocite}
+    \endentry
+    \entry{sweeney2025devolution-demo}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{journaltitle}{Political Geography}
+      \field{month}{8}
+      \field{title}{Devolution and democratic engagement in England}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \true{nocite}
+      \field{pages}{103386}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1016/j.polgeo.2025.103386
+      \endverb
+    \endentry
+    \entry{sweeney2025devolution-health}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{extraname}{4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{journaltitle}{Social Science \& Medicine}
+      \field{month}{11}
+      \field{title}{Devolution, Health and Health Inequalities in Greater Manchester}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \true{nocite}
+      \field{pages}{118763}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://10.1016/j.socscimed.2025.118763
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{2}
+  \datalist[entry]{dateydnt/global//global/global/global}
+    \entry{sweeney2025spatvar}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d395f8ed5ebee3324bd1f4b7ba3f764}{%
+           family={Sweeney},
+           familyi={S\bibinitperiod},
+           given={Nicholas\bibnamedelima Patrick},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{fullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{bibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorbibnamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authornamehash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhash}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \strng{authorfullhashraw}{5d395f8ed5ebee3324bd1f4b7ba3f764}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Spatial Economic Analysis}
+      \field{note}{2nd R\&R submitted}
+      \field{title}{Spatial Variation in Mobility Across England: Evidence from 21 Million Geo-coded Credit-Card Flows}
+      \true{nocite}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -26,6 +26,8 @@
 \usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
 \usepackage{ifthen} % Required for ifthenelse statements
 
+\usepackage[backend=biber,style=authoryear,sorting=dateydnt,maxbibnames=99]{biblatex}
+
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
