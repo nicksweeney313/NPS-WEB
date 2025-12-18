@@ -79,18 +79,52 @@ main.content{
   padding: 2.25rem 1.25rem 4.5rem;
 }
 
-/* =========================
-   Footer (site-wide)
-   ========================= */
-#quarto-footer, footer, .footer{
-  margin-top: auto;
-  padding: 1rem 0 1.25rem;
-  font-size: 0.95rem;
-  color: rgba(22, 24, 29, 0.70);
+
+/* 1) Ensure the page background is global */
+html, body{
+  background: var(--bg) !important;
 }
 
+/* 2) Kill ALL Quarto footer wrappers */
+#quarto-footer,
+#quarto-footer *,
+.nav-footer,
+.nav-footer-left,
+.nav-footer-right,
+.nav-footer-center,
+footer,
+.footer{
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 3) Kill any pseudo-elements Quarto/Bootstrap adds */
+#quarto-footer::before,
+#quarto-footer::after,
+.nav-footer::before,
+.nav-footer::after{
+  content: none !important;
+}
+
+/* 4) Ensure footer sits naturally on page background */
+#quarto-footer{
+  margin-top: auto;
+  padding: 1.25rem 0 1.5rem;
+}
+
+/* 5) Make footer text subtle, floating */
+#quarto-footer,
+#quarto-footer p,
+#quarto-footer span{
+  color: rgba(22, 24, 29, 0.65);
+  font-size: 0.95rem;
+}
+
+/* 6) Footer links */
 #quarto-footer a{
-  color: rgba(22, 24, 29, 0.82);
+  color: rgba(22, 24, 29, 0.75);
   text-decoration: none;
   border-bottom: 1px solid rgba(22, 24, 29, 0.22);
 }
