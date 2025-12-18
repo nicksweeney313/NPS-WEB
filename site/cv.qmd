@@ -7,7 +7,6 @@ format:
     title-block-banner: false
     title-block-style: plain
 ---
-
 <section class="cv-hero">
   <div class="cv-hero-inner">
     <div class="cv-hero-text">
@@ -15,18 +14,21 @@ format:
       <p class="cv-subtitle">PDF version embedded below for easy reading.</p>
     </div>
 
-    <div class="cv-hero-actions">
-      <a class="cv-btn cv-btn-primary" href="./assets/cv.pdf" download>
-        Download PDF
-      </a>
-      <a class="cv-btn cv-btn-ghost" href="./assets/cv.pdf" target="_blank" rel="noreferrer">
-        Open in new tab
-      </a>
+```
+<div class="cv-hero-actions">
+  <a class="cv-btn cv-btn-primary" href="./assets/cv.pdf" download>
+    Download PDF
+  </a>
+  <a class="cv-btn cv-btn-ghost" href="./assets/cv.pdf" target="_blank" rel="noreferrer">
+    Open in new tab
+  </a>
 
-      <div class="cv-meta">
-        <span class="cv-pill" id="last-updated">Last updated: —</span>
-      </div>
-    </div>
+  <div class="cv-meta">
+    <span class="cv-pill" id="last-updated">Last updated: —</span>
+  </div>
+</div>
+```
+
   </div>
 </section>
 
@@ -39,12 +41,15 @@ format:
       title="Curriculum Vitae PDF">
     </iframe>
 
-    <noscript>
-      <p class="cv-noscript">
-        JavaScript is disabled. You can
-        <a href="./assets/cv.pdf" target="_blank" rel="noreferrer">open the CV PDF here</a>.
-      </p>
-    </noscript>
+```
+<noscript>
+  <p class="cv-noscript">
+    JavaScript is disabled. You can
+    <a href="./assets/cv.pdf" target="_blank" rel="noreferrer">open the CV PDF here</a>.
+  </p>
+</noscript>
+```
+
   </div>
 </section>
 
@@ -57,7 +62,6 @@ format:
     d.toLocaleDateString("en-GB", { day: "2-digit", month: "long", year: "numeric" });
 
   try {
-    // Prefer the PDF's Last-Modified header (works locally + on most static hosts)
     const res = await fetch(pdfUrl, { method: "HEAD", cache: "no-store" });
     const lm = res.headers.get("last-modified");
 
@@ -69,7 +73,6 @@ format:
       }
     }
 
-    // Fallback: do a GET and use response date if available
     const res2 = await fetch(pdfUrl, { method: "GET", cache: "no-store" });
     const dateHeader = res2.headers.get("date");
     if (dateHeader) {
@@ -88,13 +91,13 @@ format:
 </script>
 
 <style>
-/* Tighten Quarto's default title spacing (keeps page feeling premium) */
-.quarto-title-block {
+/* Reduce Quarto title spacing on this page */
+.quarto-title-block{
   padding-top: .75rem !important;
   padding-bottom: .25rem !important;
   margin-bottom: .25rem !important;
 }
-.quarto-title-block .title { margin-bottom: .25rem !important; }
+.quarto-title-block .title{ margin-bottom: .25rem !important; }
 
 /* Theme-ish variables with sensible fallbacks */
 :root{
@@ -108,7 +111,7 @@ format:
 }
 
 /* Hero */
-.cv-hero {
+.cv-hero{
   width: min(1100px, 92vw);
   margin: .5rem auto 1rem;
   padding: 1rem 1rem 0;
@@ -118,7 +121,7 @@ format:
   grid-template-columns: 1.4fr 1fr;
   gap: 1rem;
   align-items: center;
-  padding: 1.25rem 1.25rem;
+  padding: 1.25rem;
   border: 1px solid var(--cv-border);
   border-radius: var(--cv-radius);
   background: var(--cv-bg);
@@ -146,7 +149,6 @@ format:
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
   padding: .65rem .9rem;
   border-radius: 999px;
   border: 1px solid var(--cv-border);
@@ -213,12 +215,7 @@ format:
 
 /* Responsive */
 @media (max-width: 820px){
-  .cv-hero-inner{
-    grid-template-columns: 1fr;
-    justify-items: start;
-  }
-  .cv-hero-actions{
-    justify-items: start;
-  }
+  .cv-hero-inner{ grid-template-columns: 1fr; }
+  .cv-hero-actions{ justify-items: start; }
 }
 </style>
