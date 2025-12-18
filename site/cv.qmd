@@ -8,81 +8,90 @@ format:
     title-block-style: plain
 ---
 
-<section class="cv-hero">
-  <div class="cv-hero-inner">
-    <div class="cv-hero-text">
-      <h2 class="cv-h2">Curriculum Vitae</h2>
-      <p class="cv-subtitle">PDF version embedded below for easy reading.</p>
-    </div>
+View my CV below, or download the PDF for printing/sharing.
 
-```
-<div class="cv-hero-actions">
-  <a class="cv-btn cv-btn-primary" href="./assets/cv.pdf" download>Download PDF</a>
-  <a class="cv-btn cv-btn-ghost" href="./assets/cv.pdf" target="_blank" rel="noreferrer">Open in new tab</a>
-  <div class="cv-meta">
-    <span class="cv-pill" id="last-updated">Last updated: —</span>
-  </div>
+<div class="cv-actions">
+  <a class="cv-btn" href="./assets/cv.pdf" download>Download CV (PDF)</a>
+  <a class="cv-link" href="./assets/cv.pdf" target="_blank" rel="noreferrer">Open in new tab</a>
 </div>
-```
 
-  </div>
-</section>
-
-<div class="cv-frame-wrap" aria-label="Embedded CV PDF">
-  <iframe
-    class="cv-frame"
-    src="./assets/cv.pdf#view=FitH"
-    loading="lazy"
-    title="Curriculum Vitae PDF"></iframe>
-
-  <noscript>
-    <p class="cv-noscript">
-      JavaScript is disabled. You can
-      <a href="./assets/cv.pdf" target="_blank" rel="noreferrer">open the CV PDF here</a>.
+<div class="cv-box">
+  <object data="./assets/cv.pdf" type="application/pdf" class="cv-embed">
+    <p class="cv-fallback">
+      Your browser can’t display the PDF inline.
+      <a href="./assets/cv.pdf" target="_blank" rel="noreferrer">Open the CV PDF</a>.
     </p>
-  </noscript>
+  </object>
 </div>
-
-<script>
-(() => {
-  const el = document.getElementById("last-updated");
-  const pdfUrl = "./assets/cv.pdf";
-
-  const formatGB = (d) =>
-    d.toLocaleDateString("en-GB", { day: "2-digit", month: "long", year: "numeric" });
-
-  fetch(pdfUrl, { method: "HEAD", cache: "no-store" })
-    .then(res => {
-      const lm = res.headers.get("last-modified");
-      if (!lm) throw new Error("no last-modified");
-      const d = new Date(lm);
-      if (Number.isNaN(d.getTime())) throw new Error("bad date");
-      el.textContent = `Last updated: ${formatGB(d)}`;
-    })
-    .catch(() => {
-      el.textContent = "Last updated: Unavailable";
-    });
-})();
-</script>
 
 <style>
-/* Keep Quarto page header tidy */
+/* Keep Quarto header spacing reasonable */
 .quarto-title-block{
-  padding-top: .75rem !important;
-  padding-bottom: .25rem !important;
-  margin-bottom: .25rem !important;
-}
-.quarto-title-block .title{ margin-bottom: .25rem !important; }
-
-/* Minimal styling (works with your existing theme) */
-:root{
-  --cv-border: rgba(15, 23, 42, .10);
-  --cv-shadow: 0 10px 30px rgba(15, 23, 42, .08);
-  --cv-shadow-soft: 0 6px 16px rgba(15, 23, 42, .08);
-  --cv-radius: 16px;
-  --cv-muted: rgba(31, 41, 55, .72);
+  padding-top: .8rem !important;
+  padding-bottom: .3rem !important;
+  margin-bottom: .5rem !important;
 }
 
-.cv-hero{
-  width: min(1100px, 92vw);
-  margin: .5rem auto 1rem;
+/* Page container */
+.cv-actions, .cv-box{
+  width: min(1050px, 92vw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Actions */
+.cv-actions{
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+  margin-top: .75rem;
+  margin-bottom: .9rem;
+  flex-wrap: wrap;
+}
+
+.cv-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem .95rem;
+  border-radius: 999px;
+  background: rgba(15,23,42,.92);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 650;
+  border: 1px solid rgba(15,23,42,.18);
+  box-shadow: 0 6px 18px rgba(15,23,42,.16);
+}
+.cv-btn:hover{
+  box-shadow: 0 10px 22px rgba(15,23,42,.20);
+}
+
+.cv-link{
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: .9;
+}
+
+/* PDF box */
+.cv-box{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(15,23,42,.12);
+  box-shadow: 0 10px 30px rgba(15,23,42,.08);
+  background: #fff;
+}
+
+.cv-embed{
+  width: 100%;
+  height: 84vh;
+  border: 0;
+  display: block;
+}
+
+.cv-fallback{
+  padding: 1rem;
+  margin: 0;
+  color: rgba(31,41,55,.75);
+}
+</style>

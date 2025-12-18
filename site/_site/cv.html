@@ -140,60 +140,87 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>View my CV below, or download the PDF for printing/sharing.</p>
 <div class="cv-actions">
-<a class="cv-download" href="./assets/cv.pdf" target="_blank" rel="noreferrer"><strong>Download CV (PDF)</strong></a>
-<div id="last-updated" class="cv-updated">
-
+<p><a class="cv-btn" href="./assets/cv.pdf" download="">Download CV (PDF)</a> <a class="cv-link" href="./assets/cv.pdf" target="_blank" rel="noreferrer">Open in new tab</a></p>
 </div>
+<div class="cv-box">
+<object data="./assets/cv.pdf" type="application/pdf" class="cv-embed">
+<p class="cv-fallback">
+Your browser can’t display the PDF inline. <a href="./assets/cv.pdf" target="_blank" rel="noreferrer">Open the CV PDF</a>.
+</p>
+<p></p></object><p></p>
 </div>
-<div class="cv-frame-wrap">
-<p><iframe class="cv-frame" src="./assets/cv.pdf#view=FitH" loading="lazy"> </iframe></p>
-</div>
-<script>
-(async () => {
-  try {
-    const api = "https://api.github.com/repos/nicksweeney313/academic-profile/commits?path=site/assets/cv.pdf&page=1&per_page=1";
-    const res = await fetch(api);
-    const data = await res.json();
-    const iso = data?.[0]?.commit?.committer?.date;
-    if (!iso) throw new Error("No commit date");
-    const d = new Date(iso);
-    const formatted = d.toLocaleDateString("en-GB", { day:"2-digit", month:"long", year:"numeric" });
-    document.getElementById("last-updated").textContent = `Last updated: ${formatted}`;
-  } catch (e) {
-    document.getElementById("last-updated").textContent = "Last updated: Unavailable";
-  }
-})();
-</script>
 <style>
-/* Reduce the big Quarto title spacing on this page */
-.quarto-title-block {
-  padding-top: 1rem !important;
-  padding-bottom: .5rem !important;
-  margin-bottom: .25rem !important;
-}
-.quarto-title-block .title {
-  margin-bottom: .25rem !important;
+/* Keep Quarto header spacing reasonable */
+.quarto-title-block{
+  padding-top: .8rem !important;
+  padding-bottom: .3rem !important;
+  margin-bottom: .5rem !important;
 }
 
-/* Link + updated date */
-.cv-actions { text-align: center; margin: .25rem 0 .75rem; }
-.cv-updated { margin-top: .35rem; font-style: italic; opacity: .75; }
-
-/* Make the PDF big */
-.cv-frame-wrap{
-  width: min(1100px, 92vw);   /* cap width */
-  margin: 0 auto;
+/* Page container */
+.cv-actions, .cv-box{
+  width: min(1050px, 92vw);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.cv-frame{
+/* Actions */
+.cv-actions{
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+  margin-top: .75rem;
+  margin-bottom: .9rem;
+  flex-wrap: wrap;
+}
+
+.cv-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem .95rem;
+  border-radius: 999px;
+  background: rgba(15,23,42,.92);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: 650;
+  border: 1px solid rgba(15,23,42,.18);
+  box-shadow: 0 6px 18px rgba(15,23,42,.16);
+}
+.cv-btn:hover{
+  box-shadow: 0 10px 22px rgba(15,23,42,.20);
+}
+
+.cv-link{
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: .9;
+}
+
+/* PDF box */
+.cv-box{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(15,23,42,.12);
+  box-shadow: 0 10px 30px rgba(15,23,42,.08);
+  background: #fff;
+}
+
+.cv-embed{
   width: 100%;
-  height: 85vh;              /* slightly shorter */
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  height: 84vh;
+  border: 0;
+  display: block;
 }
 
+.cv-fallback{
+  padding: 1rem;
+  margin: 0;
+  color: rgba(31,41,55,.75);
+}
 </style>
 
 
