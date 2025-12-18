@@ -18,6 +18,10 @@ website:
         href: cv.qmd
       - text: "Contact"
         href: contact.qmd
+  page-footer:
+    left: "Website designed by Nicholas P. Sweeney"
+    right: "[Available open access on Author's GitHub](https://github.com/nicksweeney313/NPS-WEB)"
+
 
 format:
   html:
