@@ -11,3 +11,5 @@ $bibtex_use = 2;
 
 # After a successful build, copy PDF to site/assets
 $success_cmd = 'mkdir -p ../site/assets && cp -f main.pdf ../site/assets/cv.pdf';
+
+#Make sure that the driver in TexShop is set to pdflatexmk!!

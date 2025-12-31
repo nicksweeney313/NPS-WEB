@@ -11,11 +11,16 @@ format:
 ::: {.bio-card}
 
 ::: {.bio-text}
-*Nicholas P. Sweeney* is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School. His research examines the political and economic drivers of spatial inequality, with a particular focus on the role of institutions, multi-level governance, and place-based policy in England.
+*Nicholas P. Sweeney* is the Sir Terry Leahy Fellow of Urban and Regional Economics at Alliance Manchester Business School. 
 
-Nicholas joined the University of Manchester in 2025 from the University of Cambridge, after submitting his three solo-authored PhD entitled *Devolution and Space in England: Empirical Essays on Economic Growth, Democratic Engagement and Health* in under three years. All three papers were subsequently published in leading journals (Urban Studies, Political Geography, and Social Science & Medicine, respectively).
+His research examines the multi-dimensional drivers and effects of spatial inequality, and the role of place-based policy in ameliorating disparities both between and within regions.
+Underpinning his research is the use of contemporary data availability improvements to refine theoretical and empirical understanding of longstanding debates
+on economic, political and social matters.
 
-Nicholas also completed his Master’s and undergraduate studies at the University of Cambridge. He gained a Distinction in his Master’s degree and received the highest overall marks in his undergraduate cohort, as well as the award for best final-year dissertation.
+The *why* of Nicholas' holistic research comes from growing up in Liverpool, 
+a region that has experienced significant economic decline and now evidences 
+some of the lowest incomes, political engagement and health outcomes in England -- the most spatially unequal developed country. The belief that evidenced-based, 
+practical, applied research and policy lessons can work to improve livelihoods across the world motivates his work. 
 :::
 
 <img
@@ -39,3 +44,16 @@ Nicholas also completed his Master’s and undergraduate studies at the Universi
 - Causal inference in applied microeconometrics (difference-in-differences, matching, instrumental variables)  
 - Spatial analysis and geospatial data (GIS / QGIS workflows)  
 - Reproducible research in *R* and *Python*
+
+### Educational History
+
+Nicholas joined the University of Manchester in 2025 from the University of Cambridge, 
+after submitting his three solo-authored PhD entitled *Devolution and Space in England: 
+Empirical Essays on Economic Growth, Democratic Engagement and Health* in under three years.
+All three papers were subsequently published in leading journals (Urban Studies, 
+Political Geography, and Social Science & Medicine, respectively).
+
+Nicholas also completed his Master’s and undergraduate studies at the University of Cambridge. 
+He gained a Distinction in his Master’s degree and received the highest overall marks in his undergraduate cohort, as well as the award for best final-year dissertation.
+
+### Wider Interests
