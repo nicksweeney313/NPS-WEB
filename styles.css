@@ -1,0 +1,303 @@
+/* =========================
+   Nick Sweeney — clean academic theme
+   Quarto/Bootstrap-friendly + fixes bottom “band” for good
+   ========================= */
+
+/* ---- Design tokens ---- */
+:root{
+  --bg: #eef4ff;                 /* light blue base */
+  --panel: rgba(255,255,255,0.92);
+  --text: #111827;
+  --muted: #4b5563;
+  --border: rgba(17, 24, 39, 0.10);
+
+  --accent: #2563eb;
+  --shadow: 0 10px 30px rgba(17, 24, 39, 0.10);
+
+  --radius: 16px;
+  --maxw: 900px;
+}
+
+/* =========================
+   1) Global layout + background (no overscroll bar / no empty band)
+   ========================= */
+
+/* Put the background on html so overscroll never reveals a “flat” area */
+html{
+  scroll-behavior: smooth;
+  min-height: 100%;
+  background: var(--bg);
+}
+
+/* Fixed gradient layer: prevents bottom bands/vignettes on short pages */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(1100px 600px at 12% -10%, rgba(37,99,235,0.16), transparent 55%),
+    radial-gradient(900px 500px at 88% 0%, rgba(99,102,241,0.12), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.40), rgba(255,255,255,0.00));
+}
+
+/* Make the whole Quarto page a full-height flex column so short pages
+   don’t leave a “blank” viewport area at the bottom */
+body{
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+
+  background: transparent; /* IMPORTANT: let html background show through */
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 17px;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  overscroll-behavior-y: none;
+}
+
+/* Ensure Quarto’s wrappers stretch to fill the viewport */
+#quarto-content{
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: transparent !important;
+}
+
+.page-columns,
+.content{
+  background: transparent !important;
+}
+
+/* main content grows to fill remaining height */
+main.content{
+  flex: 1 0 auto;
+  padding: 2.25rem 1.25rem 4.5rem;
+}
+
+
+/* 1) Ensure the page background is global */
+html, body{
+  background: var(--bg) !important;
+}
+
+/* 2) Kill ALL Quarto footer wrappers */
+#quarto-footer,
+#quarto-footer *,
+.nav-footer,
+.nav-footer-left,
+.nav-footer-right,
+.nav-footer-center,
+footer,
+.footer{
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 3) Kill any pseudo-elements Quarto/Bootstrap adds */
+#quarto-footer::before,
+#quarto-footer::after,
+.nav-footer::before,
+.nav-footer::after{
+  content: none !important;
+}
+
+/* 4) Ensure footer sits naturally on page background */
+#quarto-footer{
+  margin-top: auto;
+  padding: 1.25rem 0 1.5rem;
+}
+
+/* 5) Make footer text subtle, floating */
+#quarto-footer,
+#quarto-footer p,
+#quarto-footer span{
+  color: rgba(22, 24, 29, 0.65);
+  font-size: 0.95rem;
+}
+
+/* 6) Footer links */
+#quarto-footer a{
+  color: rgba(22, 24, 29, 0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(22, 24, 29, 0.22);
+}
+#quarto-footer a:hover{
+  border-bottom-color: rgba(22, 24, 29, 0.45);
+}
+
+
+/* =========================
+   2) Typography
+   ========================= */
+p{
+  margin: 0 0 1.05rem;
+  color: rgba(22, 24, 29, 0.92);
+}
+
+a{
+  color: var(--accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+a:hover{ text-decoration: underline; }
+
+h1, h2, h3{
+  letter-spacing: -0.02em;
+  margin: 2.2rem 0 0.9rem;
+}
+
+h1{
+  font-size: 2.35rem;
+  line-height: 1.12;
+  margin-top: 0.5rem;
+}
+
+h2{
+  font-size: 1.55rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.35rem;
+}
+
+h3{
+  font-size: 1.12rem;
+  color: var(--muted);
+}
+
+/* =========================
+   3) Navbar polish (Quarto/Bootstrap)
+   ========================= */
+.navbar{
+  background: var(--bg) !important;      /* match base background */
+  backdrop-filter: none !important;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand{
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.nav-link{
+  color: rgba(22,24,29,0.78) !important;
+  font-weight: 520;
+  padding: 0.55rem 0.75rem !important;
+  border-radius: 12px;
+}
+.nav-link:hover{
+  background: rgba(42,91,215,0.08);
+  color: rgba(22,24,29,0.92) !important;
+}
+.nav-link.active{
+  background: rgba(42,91,215,0.12);
+  color: rgba(22,24,29,0.95) !important;
+}
+
+/* =========================
+   4) Lists
+   ========================= */
+ul, ol{ padding-left: 1.2rem; }
+li{ margin-bottom: 0.35rem; }
+/* Bio card: image + text */
+/* Bio card: text left, photo right */
+.bio-card{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 1.75rem;
+  align-items: center;          /* <-- centre both columns vertically */
+}
+
+/* keep text starting at top within its own column */
+.bio-text{ align-self: start; }
+.bio-photo{ align-self: center; }
+
+/* Text block */
+.bio-text{
+  min-width: 0;
+  white-space: normal !important;
+}
+
+.bio-text p{
+  margin: 0 0 1rem;
+  line-height: 1.65;
+}
+
+.bio-text p:first-of-type{
+  font-size: 1.05rem;   /* gentle “lead” */
+}
+
+/* Photo */
+.bio-photo{
+  width: 240px;
+  height: auto;
+  justify-self: end;            /* keeps it snug to the right edge */
+  border-radius: 14px;
+  display: block;
+}
+
+
+/* =========================
+   6) Utility cards + pubs
+   ========================= */
+.card-lite{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.15rem;
+  margin: 1rem 0 1.15rem;
+}
+
+.pub{
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: 0 8px 22px rgba(10,20,30,0.06);
+  margin: 0.85rem 0;
+}
+.pub .title{ font-weight: 700; margin-bottom: 0.25rem; }
+.pub .meta{ color: var(--muted); font-size: 0.98rem; }
+.pub .links a{ margin-right: 0.65rem; font-weight: 650; }
+
+/* =========================
+   7) CV embeds
+   ========================= */
+iframe, object, embed{
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+/* =========================
+   8) Mobile responsiveness
+   ========================= */
+@media (max-width: 750px){
+  body{ font-size: 16px; }
+  h1{ font-size: 1.95rem; }
+
+  main.content{ padding: 1.6rem 1rem 2.5rem; }
+
+  .bio-card{
+    grid-template-columns: 1fr;
+    padding: 1.05rem;
+  }
+
+  .bio-photo{
+    width: min(65vw, 200px);
+    height: auto;
+    margin: 0 auto 0.5rem;
+    border-radius: 16px;
+    justify-self: center;   /* nice extra safety */
+  }
+}
+
+
