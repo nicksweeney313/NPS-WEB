@@ -9,13 +9,13 @@
     "venue": "Social Science & Medicine",
     "year": "2025",
     "date": "2025-11-22",
-    "doi_url": "https://doi.org/10.1016/j.socscimed.2025.118763",
+    "doi": "https://doi.org/10.1016/j.socscimed.2025.118763",
     "note": "",
-    "webnote": "Published",
     "keywords": [
       "Health",
       "Multi-level Governance"
-    ]
+    ],
+    "webnote": "Published"
   },
   {
     "id": "sweeney2025devolution-demo",
@@ -27,13 +27,13 @@
     "venue": "Political Geography",
     "year": "2025",
     "date": "2025-06-28",
-    "doi_url": "https://doi.org/10.1016/j.polgeo.2025.103386",
+    "doi": "https://doi.org/10.1016/j.polgeo.2025.103386",
     "note": "",
-    "webnote": "Published",
     "keywords": [
       "Political Engagement",
       "Multi-level Governance"
-    ]
+    ],
+    "webnote": "Published"
   },
   {
     "id": "sweeney2025devolution-growth",
@@ -45,13 +45,13 @@
     "venue": "Urban Studies",
     "year": "",
     "date": "",
-    "doi_url": "",
+    "doi": "",
     "note": "Forthcoming",
-    "webnote": "Forthcoming",
     "keywords": [
       "Economic Growth",
       "Multi-level Governance"
-    ]
+    ],
+    "webnote": "Forthcoming"
   },
   {
     "id": "sweeney2025devolution-MSAs",
@@ -63,13 +63,13 @@
     "venue": "The Political Quarterly",
     "year": "",
     "date": "",
-    "doi_url": "",
+    "doi": "",
     "note": "Forthcoming",
-    "webnote": "Forthcoming",
     "keywords": [
       "Strategy",
       "Multi-level Governance"
-    ]
+    ],
+    "webnote": "Forthcoming"
   },
   {
     "id": "sweeney2025spatvar",
@@ -81,12 +81,12 @@
     "venue": "Spatial Economic Analysis",
     "year": "",
     "date": "",
-    "doi_url": "",
+    "doi": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5932075",
     "note": "2nd R&R submitted",
-    "webnote": "2nd R&R submitted",
     "keywords": [
       "Mobility Inequalities",
       "Big Data"
-    ]
+    ],
+    "webnote": "2nd R&R submitted"
   }
 ]

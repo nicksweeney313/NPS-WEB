@@ -23,22 +23,11 @@
 % IMPORTANT: do NOT type any quotes into the .bib title field itself.
 \DeclareFieldFormat[article]{title}{`#1'}
 
-% --- DOI: show as clickable "DOI"
+% --- DOI field: blindly treat contents as a clickable URL
 \DeclareFieldFormat{doi}{%
   \iffieldundef{doi}
     {}
-    {\addspace\href{https://doi.org/#1}{\nolinkurl{DOI}}}%
-}
-
-% Strip "https://doi.org/" if you accidentally include it in the .bib
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map{
-      \step[fieldsource=doi,
-            match=\regexp{^https?://(dx\.)?doi\.org/},
-            replace={}]
-    }
-  }
+    {\addspace\href{#1}{\nolinkurl{DOI}}}%
 }
 
 % --- Remove unwanted fields
