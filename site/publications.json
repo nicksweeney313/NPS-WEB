@@ -36,43 +36,43 @@
     "webnote": "Published"
   },
   {
-    "id": "sweeney2025devolution-growth",
+    "id": "sweeney2026devolution-growth",
     "type": "article",
     "title": "Devolution and Economic Growth in English City Regions",
     "authors": [
       "Sweeney, Nicholas Patrick"
     ],
     "venue": "Urban Studies",
-    "year": "",
-    "date": "",
-    "doi": "",
-    "note": "Forthcoming",
+    "year": "2026",
+    "date": "2026-02-06",
+    "doi": "https://doi.org/10.1177/00420980251408416",
+    "note": "",
     "keywords": [
       "Economic Growth",
       "Multi-level Governance"
     ],
-    "webnote": "Forthcoming"
+    "webnote": "Published"
   },
   {
-    "id": "sweeney2025devolution-MSAs",
+    "id": "sweeney2026devolution-MSAs",
     "type": "article",
     "title": "Challenging the S of Mayoral Strategic Authorities: Standardisation Over Strategy?",
     "authors": [
       "Sweeney, Nicholas Patrick"
     ],
     "venue": "The Political Quarterly",
-    "year": "",
-    "date": "",
-    "doi": "",
-    "note": "Forthcoming",
+    "year": "2026",
+    "date": "2026-01-28",
+    "doi": "https://doi.org/10.1111/1467-923x.70051",
+    "note": "",
     "keywords": [
       "Strategy",
       "Multi-level Governance"
     ],
-    "webnote": "Forthcoming"
+    "webnote": "Published"
   },
   {
-    "id": "sweeney2025spatvar",
+    "id": "sweeney2026spatvar",
     "type": "article",
     "title": "Spatial Variation in Mobility Across England: Evidence from 21 Million Geo-coded Credit-Card Flows",
     "authors": [
@@ -88,5 +88,23 @@
       "Big Data"
     ],
     "webnote": "2nd R&R submitted"
+  },
+  {
+    "id": "sweeney2026tempmicro",
+    "type": "article",
+    "title": "The Interactive Temporal Microfoundations of Agglomeration Economies and Their Implications",
+    "authors": [
+      "Sweeney, Nicholas Patrick"
+    ],
+    "venue": "",
+    "year": "",
+    "date": "",
+    "doi": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6135786",
+    "note": "",
+    "keywords": [
+      "Agglomeration",
+      "Time Density"
+    ],
+    "webnote": ""
   }
 ]
