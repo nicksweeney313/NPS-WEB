@@ -4,6 +4,9 @@ project:
   - assets/
   - CNAME
   - publications.json
+  - favicon.ico
+  - favicon.png
+  - favicon.svg
   output-dir: _site
 
 website:
