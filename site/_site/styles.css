@@ -185,11 +185,19 @@ h3{
    ========================= */
 
 .navbar{
-  background: transparent !important;  /* let page bg/gradient show */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* solid fill so content doesn’t show through */
+  background: var(--bg) !important;
   border-bottom: 1px solid var(--border);
+
+  /* subtle separation */
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
 }
 
-/* Centre/cap the navbar contents as well */
+/* keep your existing centring logic */
 .navbar .container,
 .navbar .container-fluid,
 .navbar .navbar-container{
@@ -291,9 +299,6 @@ li{ margin-bottom: 0.35rem; }
 .pub .meta{ color: var(--muted); font-size: 0.98rem; }
 .pub .links a{ margin-right: 0.65rem; font-weight: 650; }
 
-/* =========================
-   7) CV embeds
-   ========================= */
 
 /* =========================
    8) Mobile responsiveness
