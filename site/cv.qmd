@@ -7,7 +7,6 @@ format:
     title-block-banner: false
     title-block-style: plain
 ---
-
 <p class="cv-lede">
   View my CV below, or
   <a class="cv-inline" href="./assets/cv.pdf" target="_blank" rel="noreferrer">open in a new tab</a>,
@@ -17,14 +16,22 @@ format:
 </p>
 
 <div class="cv-box">
-  <object data="./assets/cv.pdf" type="application/pdf" class="cv-embed">
+  <!-- Desktop/laptop: keep <object> (works well in Chrome/Firefox) -->
+  <object data="./assets/cv.pdf" type="application/pdf" class="cv-embed cv-embed--object">
     <p class="cv-fallback">
       Your browser can’t display the PDF inline.
       <a class="cv-inline" href="./assets/cv.pdf" target="_blank" rel="noreferrer">Open the CV PDF</a>.
     </p>
   </object>
-</div>
 
+  <!-- Mobile (iOS Safari): use <iframe> (object is flaky/black) -->
+  <iframe
+    src="./assets/cv.pdf"
+    class="cv-embed cv-embed--iframe"
+    title="CV PDF"
+    loading="lazy"
+  ></iframe>
+</div>
 
 <style>
 /* Keep Quarto header spacing reasonable */
@@ -35,44 +42,10 @@ format:
 }
 
 /* Page container */
-.cv-actions, .cv-box{
+.cv-box{
   width: min(900px, 92vw);
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Actions */
-.cv-actions{
-  display: flex;
-  gap: .75rem;
-  align-items: center;
-  margin-top: .75rem;
-  margin-bottom: .9rem;
-  flex-wrap: wrap;
-}
-
-.cv-btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: .65rem .95rem;
-  border-radius: 999px;
-  background: rgba(15,23,42,.92);
-  color: #fff !important;
-  text-decoration: none !important;
-  font-weight: 650;
-  border: 1px solid rgba(15,23,42,.18);
-  box-shadow: 0 6px 18px rgba(15,23,42,.16);
-}
-.cv-btn:hover{
-  box-shadow: 0 10px 22px rgba(15,23,42,.20);
-}
-
-.cv-link{
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  opacity: .9;
 }
 
 /* PDF box */
@@ -80,26 +53,30 @@ format:
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(15,23,42,.12);
-  border-bottom: 0;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(15,23,42,.08);
 }
 
-
+/* Shared embed styling */
 .cv-embed{
   width: 100%;
-  height: calc(84vh + 2px);
-  border: 0;
-  display: block;
-  vertical-align: bottom; /* prevents tiny inline gap */
-}
-.cv-embed{
+  height: 84vh;
   border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  background: #080707;
+  display: block;
+  background: #fff;
 }
 
+/* Default: show the object (desktop) */
+.cv-embed--iframe{ display: none; }
 
+/* iOS/mobile: swap to iframe to avoid black/blank PDF rendering */
+@media (max-width: 750px){
+  .cv-embed--object{ display: none; }
+  .cv-embed--iframe{ display: block; }
+  .cv-embed{ height: 75vh; }
+}
 
+/* Fallback text */
 .cv-fallback{
   padding: 1rem;
   margin: 0;
