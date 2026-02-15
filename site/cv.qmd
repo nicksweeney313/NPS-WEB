@@ -70,18 +70,10 @@ format:
 .cv-embed--iframe{ display: none; }
 
 /* iOS/mobile: swap to iframe to avoid black/blank PDF rendering */
-/* iOS/mobile: swap to iframe + zoom out a bit */
 @media (max-width: 750px){
   .cv-embed--object{ display: none; }
   .cv-embed--iframe{ display: block; }
-
-  .cv-embed{
-    height: 78vh;           /* a touch taller = more page visible */
-    transform: scale(0.65); /* zoom out slightly */
-    transform-origin: top center;
-    width: 135%;            /* counter the scale so it still fills */
-    margin-left: -4%;       /* re-centre after width bump */
-  }
+  .cv-embed{ height: 75vh; }
 }
 
 /* Fallback text */
