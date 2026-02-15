@@ -77,7 +77,7 @@ format:
 
   .cv-embed{
     height: 78vh;           /* a touch taller = more page visible */
-    transform: scale(0.92); /* zoom out slightly */
+    transform: scale(0.72); /* zoom out slightly */
     transform-origin: top center;
     width: 108%;            /* counter the scale so it still fills */
     margin-left: -4%;       /* re-centre after width bump */
