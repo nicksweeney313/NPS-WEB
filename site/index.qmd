@@ -42,8 +42,8 @@ The belief that evidenced-based research can help to improve livelihoods across 
 - Mobility, access to services, and health inequalities  
 
 ### Methods
-- Causal inference in applied microeconometrics (difference-in-differences, matching, instrumental variables)  
-- Spatial analysis and geospatial data 
+- Causal inference in applied microeconometrics 
+- Spatial analysis using big geospatial data 
 - Reproducible research in *R* and *Python*
 
 ### Educational History

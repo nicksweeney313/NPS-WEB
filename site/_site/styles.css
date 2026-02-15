@@ -1,6 +1,7 @@
 /* =========================
    Nick Sweeney — clean academic theme
-   Quarto/Bootstrap-friendly + fixes bottom “band” for good
+   Quarto/Bootstrap-friendly
+   Centred max-width layout (gutters on both sides) + no bottom “band”
    ========================= */
 
 /* ---- Design tokens ---- */
@@ -15,14 +16,16 @@
   --shadow: 0 10px 30px rgba(17, 24, 39, 0.10);
 
   --radius: 16px;
-  --maxw: 900px;
+  --maxw: 1000px;
+
+  --gutter: 1.25rem;             /* consistent side padding */
 }
 
 /* =========================
-   1) Global layout + background (no overscroll bar / no empty band)
+   1) Global layout + background (no overscroll band)
    ========================= */
 
-/* Put the background on html so overscroll never reveals a “flat” area */
+/* Background lives on html so overscroll never reveals a “flat” area */
 html{
   scroll-behavior: smooth;
   min-height: 100%;
@@ -42,15 +45,14 @@ body::before{
     linear-gradient(180deg, rgba(255,255,255,0.40), rgba(255,255,255,0.00));
 }
 
-/* Make the whole Quarto page a full-height flex column so short pages
-   don’t leave a “blank” viewport area at the bottom */
+/* Full-height flex column so short pages don’t leave blank viewport space */
 body{
   margin: 0;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
 
-  background: transparent; /* IMPORTANT: let html background show through */
+  background: transparent; /* let html background show through */
   color: var(--text);
   line-height: 1.75;
   font-size: 17px;
@@ -60,7 +62,7 @@ body{
   overscroll-behavior-y: none;
 }
 
-/* Ensure Quarto’s wrappers stretch to fill the viewport */
+/* Ensure Quarto wrappers stretch and stay transparent */
 #quarto-content{
   flex: 1 0 auto;
   display: flex;
@@ -73,19 +75,31 @@ body{
   background: transparent !important;
 }
 
-/* main content grows to fill remaining height */
+/* Main content grows to fill remaining height */
 main.content{
   flex: 1 0 auto;
-  padding: 2.25rem 1.25rem 4.5rem;
+  padding: 2.25rem var(--gutter) 4.5rem;
 }
 
+/* =========================
+   1b) Site-wide width cap (centred layout + gutters)
+   ========================= */
 
-/* 1) Ensure the page background is global */
-html, body{
-  background: var(--bg) !important;
+/* Cap and centre the key wrappers (covers most Quarto layouts) */
+#quarto-content,
+.page-columns,
+.content,
+main.content{
+  max-width: var(--maxw);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* 2) Kill ALL Quarto footer wrappers */
+/* =========================
+   1c) Footer: remove “band” + keep subtle
+   ========================= */
+
 #quarto-footer,
 #quarto-footer *,
 .nav-footer,
@@ -100,7 +114,6 @@ footer,
   box-shadow: none !important;
 }
 
-/* 3) Kill any pseudo-elements Quarto/Bootstrap adds */
 #quarto-footer::before,
 #quarto-footer::after,
 .nav-footer::before,
@@ -108,13 +121,11 @@ footer,
   content: none !important;
 }
 
-/* 4) Ensure footer sits naturally on page background */
 #quarto-footer{
   margin-top: auto;
   padding: 1.25rem 0 1.5rem;
 }
 
-/* 5) Make footer text subtle, floating */
 #quarto-footer,
 #quarto-footer p,
 #quarto-footer span{
@@ -122,7 +133,6 @@ footer,
   font-size: 0.95rem;
 }
 
-/* 6) Footer links */
 #quarto-footer a{
   color: rgba(22, 24, 29, 0.75);
   text-decoration: none;
@@ -132,10 +142,10 @@ footer,
   border-bottom-color: rgba(22, 24, 29, 0.45);
 }
 
-
 /* =========================
    2) Typography
    ========================= */
+
 p{
   margin: 0 0 1.05rem;
   color: rgba(22, 24, 29, 0.92);
@@ -173,10 +183,22 @@ h3{
 /* =========================
    3) Navbar polish (Quarto/Bootstrap)
    ========================= */
+
 .navbar{
-  background: var(--bg) !important;      /* match base background */
-  backdrop-filter: none !important;
+  background: transparent !important;  /* let page bg/gradient show */
   border-bottom: 1px solid var(--border);
+}
+
+/* Centre/cap the navbar contents as well */
+.navbar .container,
+.navbar .container-fluid,
+.navbar .navbar-container{
+  max-width: var(--maxw);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
 }
 
 .navbar-brand{
@@ -202,18 +224,21 @@ h3{
 /* =========================
    4) Lists
    ========================= */
+
 ul, ol{ padding-left: 1.2rem; }
 li{ margin-bottom: 0.35rem; }
-/* Bio card: image + text */
-/* Bio card: text left, photo right */
+
+/* =========================
+   5) Bio card (text left, photo right)
+   ========================= */
+
 .bio-card{
   display: grid;
   grid-template-columns: minmax(0, 1fr) 240px;
   gap: 1.75rem;
-  align-items: center;          /* <-- centre both columns vertically */
+  align-items: center; /* centre both columns vertically */
 }
 
-/* keep text starting at top within its own column */
 .bio-text{ align-self: start; }
 .bio-photo{ align-self: center; }
 
@@ -229,22 +254,22 @@ li{ margin-bottom: 0.35rem; }
 }
 
 .bio-text p:first-of-type{
-  font-size: 1.05rem;   /* gentle “lead” */
+  font-size: 1.05rem; /* gentle “lead” */
 }
 
 /* Photo */
 .bio-photo{
   width: 240px;
   height: auto;
-  justify-self: end;            /* keeps it snug to the right edge */
+  justify-self: end;
   border-radius: 14px;
   display: block;
 }
 
-
 /* =========================
    6) Utility cards + pubs
    ========================= */
+
 .card-lite{
   background: var(--panel);
   border: 1px solid var(--border);
@@ -269,17 +294,11 @@ li{ margin-bottom: 0.35rem; }
 /* =========================
    7) CV embeds
    ========================= */
-iframe, object, embed{
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: #fff;
-  box-shadow: var(--shadow);
-}
 
 /* =========================
    8) Mobile responsiveness
    ========================= */
+
 @media (max-width: 750px){
   body{ font-size: 16px; }
   h1{ font-size: 1.95rem; }
@@ -296,8 +315,9 @@ iframe, object, embed{
     height: auto;
     margin: 0 auto 0.5rem;
     border-radius: 16px;
-    justify-self: center;   /* nice extra safety */
+    justify-self: center;
   }
+
+  /* Slightly tighter gutters on small screens */
+  :root{ --gutter: 1rem; }
 }
-
-

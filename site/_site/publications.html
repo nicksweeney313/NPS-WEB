@@ -148,6 +148,7 @@ ul.task-list li input[type="checkbox"] {
   const container = document.getElementById("pubs");
   const url = "./publications.json";
 
+  // ---------------- helpers ----------------
   function escapeText(s) { return String(s ?? ""); }
 
   function normDate(d) {
@@ -177,7 +178,15 @@ ul.task-list li input[type="checkbox"] {
     return dir === "asc" ? cmp : -cmp;
   }
 
-  // Search across all columns (including DOI URL)
+  function normaliseDoiUrl(raw) {
+    const s = String(raw ?? "").trim();
+    if (!s) return "";
+    if (s.startsWith("http://") || s.startsWith("https://")) return s;
+    // allow bare DOI like "10.1234/abcd"
+    return `https://doi.org/${s}`;
+  }
+
+  // Search across all visible fields + DOI URL
   function matchesQuery(p, q) {
     if (!q) return true;
     const hay = [
@@ -193,14 +202,15 @@ ul.task-list li input[type="checkbox"] {
 
     const pubsAll = (data || []).map(d => {
       const kws = Array.isArray(d.keywords) ? d.keywords : [];
+      const authorsArr = Array.isArray(d.authors) ? d.authors : [];
       return ({
         date: d.date || d.published || d.publication_date || "",
         title: d.title || "",
-        authors: (d.authors || []).join(", "),
+        authors: authorsArr.join(", "),
         journal: d.venue || d.journal || "",
         keywords: kws.join(", "),
         webnote: d.webnote || "",
-        doi_url: d.doi_url || d.doi || ""
+        doi_url: normaliseDoiUrl(d.doi_url || d.doi || "")
       });
     });
 
@@ -213,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
     let sortState = { key: "date", dir: "desc" };
     let query = "";
 
-    // --- UI: search bar + meta ---
+    // ---------------- UI: search + meta ----------------
     const topbar = document.createElement("div");
     topbar.className = "pubs-topbar";
 
@@ -231,7 +241,7 @@ ul.task-list li input[type="checkbox"] {
     topbar.appendChild(search);
     topbar.appendChild(meta);
 
-    // --- Table skeleton ---
+    // ---------------- Table skeleton (NO DOI column) ----------------
     const wrap = document.createElement("div");
     wrap.className = "pubs-table-wrap";
 
@@ -277,15 +287,11 @@ ul.task-list li input[type="checkbox"] {
     const thKeywords = makeSortableTh("Keywords", "keywords");
     const thNotes    = makeSortableTh("Notes", "webnote");
 
-    const thLinks = document.createElement("th");
-    thLinks.textContent = "Link";
-
     headRow.appendChild(thDate);
     headRow.appendChild(thTitle);
     headRow.appendChild(thJournal);
     headRow.appendChild(thKeywords);
     headRow.appendChild(thNotes);
-    headRow.appendChild(thLinks);
 
     thead.appendChild(headRow);
 
@@ -330,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
       if (!pubsView.length) {
         const tr = document.createElement("tr");
         const td = document.createElement("td");
-        td.colSpan = 6;
+        td.colSpan = 5;
         td.className = "pubs-empty";
         td.textContent = "No matches.";
         tr.appendChild(td);
@@ -341,17 +347,31 @@ ul.task-list li input[type="checkbox"] {
       for (const p of pubsView) {
         const tr = document.createElement("tr");
 
+        // Date
         const tdDate = document.createElement("td");
         tdDate.className = "pubs-date";
         tdDate.textContent = fmtDate(p.date);
 
+        // Title (+ authors) — title becomes DOI link if present
         const tdTitle = document.createElement("td");
         tdTitle.className = "pubs-title";
 
-        const tDiv = document.createElement("div");
-        tDiv.className = "pubs-title-text";
-        tDiv.textContent = escapeText(p.title);
-        tdTitle.appendChild(tDiv);
+        const doi = String(p.doi_url || "").trim();
+
+        if (doi) {
+          const a = document.createElement("a");
+          a.href = doi;
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.className = "pubs-title-text pubs-title-link";
+          a.textContent = escapeText(p.title);
+          tdTitle.appendChild(a);
+        } else {
+          const span = document.createElement("span");
+          span.className = "pubs-title-text";
+          span.textContent = escapeText(p.title);
+          tdTitle.appendChild(span);
+        }
 
         if (p.authors) {
           const aDiv = document.createElement("div");
@@ -360,10 +380,12 @@ ul.task-list li input[type="checkbox"] {
           tdTitle.appendChild(aDiv);
         }
 
+        // Journal
         const tdJournal = document.createElement("td");
         tdJournal.className = "pubs-journal";
         tdJournal.textContent = escapeText(p.journal);
 
+        // Keywords (chips)
         const tdKeywords = document.createElement("td");
         tdKeywords.className = "pubs-keywords";
 
@@ -386,28 +408,17 @@ ul.task-list li input[type="checkbox"] {
           tdKeywords.textContent = "";
         }
 
+        // Notes
         const tdNotes = document.createElement("td");
         tdNotes.className = "pubs-notes";
         tdNotes.textContent = escapeText(p.webnote);
-
-        const tdLinks = document.createElement("td");
-        tdLinks.className = "pubs-links";
-        const doi = String(p.doi_url || "").trim();
-        if (doi) {
-          const a = document.createElement("a");
-          a.href = doi;
-          a.target = "_blank";
-          a.rel = "noopener";
-          a.textContent = "DOI";
-          tdLinks.appendChild(a);
-        }
 
         tr.appendChild(tdDate);
         tr.appendChild(tdTitle);
         tr.appendChild(tdJournal);
         tr.appendChild(tdKeywords);
         tr.appendChild(tdNotes);
-        tr.appendChild(tdLinks);
+
         tbody.appendChild(tr);
       }
     }
@@ -474,8 +485,16 @@ ul.task-list li input[type="checkbox"] {
 .pubs-date { white-space: nowrap; width: 1%; }
 .pubs-title-text { font-weight: 600; }
 .pubs-authors { margin-top: .2rem; font-size: .92em; opacity: .8; }
-.pubs-links a { white-space: nowrap; }
 
+/* Title link styling (keeps your “premium” look) */
+.pubs-title-link{
+  text-decoration: none;
+}
+.pubs-title-link:hover{
+  text-decoration: underline;
+}
+
+/* Empty state */
 .pubs-empty{
   padding: 1rem .8rem;
   opacity: .8;
