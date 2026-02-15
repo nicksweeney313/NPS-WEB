@@ -96,6 +96,7 @@ main.content{
   margin-right: auto;
 }
 
+
 /* =========================
    1c) Footer: remove “band” + keep subtle
    ========================= */
@@ -325,4 +326,18 @@ li{ margin-bottom: 0.35rem; }
 
   /* Slightly tighter gutters on small screens */
   :root{ --gutter: 1rem; }
+}
+
+/* Mobile: iOS Safari can jitter/“track” fixed gradients while scrolling */
+@media (max-width: 750px){
+  body::before{
+    /* simplest + most stable fix */
+    position: absolute;
+    inset: 0;
+
+    /* slightly softer gradient so it doesn’t dominate the screen */
+    background:
+      radial-gradient(700px 420px at 50% -10%, rgba(37,99,235,0.10), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.00));
+  }
 }
