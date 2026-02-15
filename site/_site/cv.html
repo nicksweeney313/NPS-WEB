@@ -189,10 +189,18 @@ Your browser can’t display the PDF inline. <a class="cv-inline" href="./assets
 .cv-embed--iframe{ display: none; }
 
 /* iOS/mobile: swap to iframe to avoid black/blank PDF rendering */
+/* iOS/mobile: swap to iframe + zoom out a bit */
 @media (max-width: 750px){
   .cv-embed--object{ display: none; }
   .cv-embed--iframe{ display: block; }
-  .cv-embed{ height: 75vh; }
+
+  .cv-embed{
+    height: 78vh;           /* a touch taller = more page visible */
+    transform: scale(0.92); /* zoom out slightly */
+    transform-origin: top center;
+    width: 108%;            /* counter the scale so it still fills */
+    margin-left: -4%;       /* re-centre after width bump */
+  }
 }
 
 /* Fallback text */
