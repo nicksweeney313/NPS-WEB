@@ -1,0 +1,130 @@
+---
+title: "Working Papers"
+format:
+  html:
+    page-layout: full
+    toc: false
+    title-block-banner: false
+    title-block-style: plain
+---
+
+<p class="wp-lede">
+  Browse current working papers below. Expand an entry to read it inline, or open and download the PDF separately.
+</p>
+
+```{=html}
+<div class="wp-accordion">
+  <details class="wp-item" id="global-patent-database">
+    <summary>
+      <span class="wp-item-heading">
+        <button type="button" class="wp-item-title wp-title-toggle" data-hash="global-patent-database" aria-label="Toggle Global Patent Database">Global Patent Database</button>
+        <span class="wp-item-subtitle">17 April 2026</span>
+      </span>
+      <span class="wp-item-toggle" aria-hidden="true"></span>
+    </summary>
+
+    <div class="wp-item-body">
+      <p class="wp-item-meta">
+        <a href="./assets/global_patent_database.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+        <span class="wp-meta-sep">·</span>
+        <a href="./assets/global_patent_database.pdf" download>Download PDF</a>
+      </p>
+
+      <div class="wp-pdf-box">
+        <object data="./assets/global_patent_database.pdf" type="application/pdf" class="wp-pdf-embed wp-pdf-embed--object">
+          <p class="wp-pdf-fallback">
+            Your browser can’t display the PDF inline.
+            <a href="./assets/global_patent_database.pdf" target="_blank" rel="noreferrer">Open the PDF</a>.
+          </p>
+        </object>
+
+        <iframe
+          src="./assets/global_patent_database.pdf"
+          class="wp-pdf-embed wp-pdf-embed--iframe"
+          title="Global Patent Database PDF"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </details>
+
+  <details class="wp-item" id="time-density">
+    <summary>
+      <span class="wp-item-heading">
+        <button type="button" class="wp-item-title wp-title-toggle" data-hash="time-density" aria-label="Toggle Time Density">Time Density</button>
+        <span class="wp-item-subtitle">26 Jan 2026</span>
+      </span>
+      <span class="wp-item-toggle" aria-hidden="true"></span>
+    </summary>
+
+    <div class="wp-item-body">
+      <p class="wp-item-meta">
+        <span>26 Jan 2026</span>
+        <span class="wp-meta-sep">·</span>
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6135786" target="_blank" rel="noopener noreferrer">SSRN abstract</a>
+        <span class="wp-meta-sep">·</span>
+        <a href="./assets/ssrn-6135786.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+        <span class="wp-meta-sep">·</span>
+        <a href="./assets/ssrn-6135786.pdf" download>Download PDF</a>
+      </p>
+
+      <div class="wp-pdf-box">
+        <object data="./assets/ssrn-6135786.pdf" type="application/pdf" class="wp-pdf-embed wp-pdf-embed--object">
+          <p class="wp-pdf-fallback">
+            Your browser can’t display the PDF inline.
+            <a href="./assets/ssrn-6135786.pdf" target="_blank" rel="noreferrer">Open the PDF</a>.
+          </p>
+        </object>
+
+        <iframe
+          src="./assets/ssrn-6135786.pdf"
+          class="wp-pdf-embed wp-pdf-embed--iframe"
+          title="Time Density PDF"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </details>
+</div>
+
+<script>
+  (function () {
+    const titleToggles = Array.from(document.querySelectorAll(".wp-title-toggle"));
+
+    function syncHashTarget() {
+      const id = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+      if (!id) return;
+
+      const target = document.getElementById(id);
+      if (!target || !target.classList.contains("wp-item")) return;
+
+      target.open = true;
+      window.setTimeout(() => {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    }
+
+    for (const titleToggle of titleToggles) {
+      titleToggle.addEventListener("click", (event) => {
+        const item = titleToggle.closest(".wp-item");
+        if (!item) return;
+
+        const shouldOpen = !item.open;
+        event.stopPropagation();
+        event.preventDefault();
+        const id = titleToggle.dataset.hash;
+        if (!id) return;
+        history.replaceState(null, "", `#${id}`);
+
+        item.open = shouldOpen;
+        if (shouldOpen) {
+          syncHashTarget();
+        }
+      });
+    }
+
+    window.addEventListener("hashchange", syncHashTarget);
+    syncHashTarget();
+  })();
+</script>
+```

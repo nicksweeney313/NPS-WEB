@@ -20,6 +20,8 @@ website:
         href: publications.qmd
       - text: "CV"
         href: cv.qmd
+      - text: "WPs"
+        href: working-papers.qmd
       - text: "Contact"
         href: contact.qmd
   page-footer:

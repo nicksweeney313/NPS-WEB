@@ -28,6 +28,15 @@ def clean_tex(v: str) -> str:
     return v
 
 
+def is_truthy(v: str) -> bool:
+    return clean_tex(v).strip().lower() in {"1", "true", "yes", "y"}
+
+
+def is_forthcoming(fields: dict) -> bool:
+    status = clean_tex(fields.get("webnote", "") or fields.get("note", "") or fields.get("pubstate", ""))
+    return status.lower() == "forthcoming"
+
+
 def split_tags(v: str) -> list[str]:
     v = clean_tex(v)
     if not v:
@@ -71,6 +80,8 @@ def pick_date(fields: dict) -> str:
     d = clean_tex(fields.get("date", ""))
     if d:
         return d
+    if is_forthcoming(fields):
+        return ""
     y = clean_tex(fields.get("year", ""))
     return f"{y}-01-01" if y else ""
 
@@ -140,6 +151,9 @@ def parse_bibtex(text: str) -> list[dict]:
     for m in ENTRY_RE.finditer(text):
         entrytype, entryid, body = m.group(1).lower(), m.group(2).strip(), m.group(3)
         fields = parse_fields(body)
+
+        if is_truthy(fields.get("webhidden", "")):
+            continue
 
         title = clean_tex(fields.get("title", ""))
         if not title:

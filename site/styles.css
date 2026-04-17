@@ -300,6 +300,151 @@ li{ margin-bottom: 0.35rem; }
 .pub .meta{ color: var(--muted); font-size: 0.98rem; }
 .pub .links a{ margin-right: 0.65rem; font-weight: 650; }
 
+/* =========================
+   7) Working papers accordion
+   ========================= */
+
+.wp-lede{
+  width: min(900px, 92vw);
+  margin: 0 auto 1rem;
+}
+
+.wp-accordion{
+  width: min(900px, 92vw);
+  margin: 0 auto;
+}
+
+.wp-item{
+  margin: 0 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  scroll-margin-top: 6.5rem;
+}
+
+.wp-item summary{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.wp-item summary::-webkit-details-marker{
+  display: none;
+}
+
+.wp-item-heading{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.wp-item-title{
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.wp-title-toggle{
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+  text-decoration: none;
+  font: inherit;
+}
+
+.wp-title-toggle:hover{
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.wp-item-subtitle{
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.wp-item-toggle{
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(37,99,235,0.18);
+  background: rgba(37,99,235,0.08);
+  position: relative;
+}
+
+.wp-item-toggle::before,
+.wp-item-toggle::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.85rem;
+  height: 2px;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.wp-item-toggle::after{
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.wp-item[open] .wp-item-toggle::after{
+  opacity: 0;
+}
+
+.wp-item-body{
+  padding: 0 1.25rem 1.25rem;
+}
+
+.wp-item-meta{
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.wp-item-meta a{
+  font-weight: 600;
+}
+
+.wp-meta-sep{
+  margin: 0 0.35rem;
+  color: rgba(75,85,99,0.6);
+}
+
+.wp-pdf-box{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+}
+
+.wp-pdf-embed{
+  width: 100%;
+  height: 80vh;
+  border: 0 !important;
+  display: block;
+  background: #fff;
+}
+
+.wp-pdf-embed--iframe{
+  display: none;
+}
+
+.wp-pdf-fallback{
+  padding: 1rem;
+  margin: 0;
+  color: rgba(31,41,55,0.75);
+}
 
 /* =========================
    8) Mobile responsiveness
@@ -322,6 +467,26 @@ li{ margin-bottom: 0.35rem; }
     margin: 0 auto 0.5rem;
     border-radius: 16px;
     justify-self: center;
+  }
+
+  .wp-item summary{
+    padding: 1rem;
+  }
+
+  .wp-item-body{
+    padding: 0 1rem 1rem;
+  }
+
+  .wp-pdf-embed--object{
+    display: none;
+  }
+
+  .wp-pdf-embed--iframe{
+    display: block;
+  }
+
+  .wp-pdf-embed{
+    height: 72vh;
   }
 
   /* Slightly tighter gutters on small screens */
