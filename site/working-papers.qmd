@@ -54,15 +54,12 @@ format:
     <summary>
       <span class="wp-item-heading">
         <button type="button" class="wp-item-title wp-title-toggle" data-hash="time-density" aria-label="Toggle Time Density">Time Density</button>
-        <span class="wp-item-subtitle">26 Jan 2026</span>
       </span>
       <span class="wp-item-toggle" aria-hidden="true"></span>
     </summary>
 
     <div class="wp-item-body">
       <p class="wp-item-meta">
-        <span>26 Jan 2026</span>
-        <span class="wp-meta-sep">·</span>
         <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6135786" target="_blank" rel="noopener noreferrer">SSRN abstract</a>
         <span class="wp-meta-sep">·</span>
         <a href="./assets/ssrn-6135786.pdf" target="_blank" rel="noreferrer">Open PDF</a>
