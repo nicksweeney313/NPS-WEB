@@ -25,6 +25,8 @@ format:
 
     <div class="wp-item-body">
       <p class="wp-item-meta">
+        <a href="https://papers.ssrn.com/abstract=6593058" target="_blank" rel="noopener noreferrer">SSRN abstract</a>
+        <span class="wp-meta-sep">·</span>
         <a href="./assets/global_patent_database.pdf" target="_blank" rel="noreferrer">Open PDF</a>
         <span class="wp-meta-sep">·</span>
         <a href="./assets/global_patent_database.pdf" download>Download PDF</a>
