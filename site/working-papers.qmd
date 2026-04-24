@@ -9,7 +9,7 @@ format:
 ---
 
 <p class="wp-lede">
-  Browse current working papers below. Expand an entry to read it inline, or open and download the PDF separately.
+  Browse current working papers below.
 </p>
 
 ```{=html}
@@ -54,6 +54,7 @@ format:
     <summary>
       <span class="wp-item-heading">
         <button type="button" class="wp-item-title wp-title-toggle" data-hash="time-density" aria-label="Toggle Time Density">Time Density</button>
+        <span class="wp-item-subtitle">26 Jan 2026</span>
       </span>
       <span class="wp-item-toggle" aria-hidden="true"></span>
     </summary>
