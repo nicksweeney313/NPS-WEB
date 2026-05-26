@@ -1,0 +1,508 @@
+/* =========================
+   Nick Sweeney — clean academic theme
+   Quarto/Bootstrap-friendly
+   Centred max-width layout (gutters on both sides) + no bottom “band”
+   ========================= */
+
+/* ---- Design tokens ---- */
+:root{
+  --bg: #eef4ff;                 /* light blue base */
+  --panel: rgba(255,255,255,0.92);
+  --text: #111827;
+  --muted: #4b5563;
+  --border: rgba(17, 24, 39, 0.10);
+
+  --accent: #2563eb;
+  --shadow: 0 10px 30px rgba(17, 24, 39, 0.10);
+
+  --radius: 16px;
+  --maxw: 1000px;
+
+  --gutter: 1.25rem;             /* consistent side padding */
+}
+
+/* =========================
+   1) Global layout + background (no overscroll band)
+   ========================= */
+
+/* Background lives on html so overscroll never reveals a “flat” area */
+html{
+  scroll-behavior: smooth;
+  min-height: 100%;
+  background: var(--bg);
+}
+
+/* Fixed gradient layer: prevents bottom bands/vignettes on short pages */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(1100px 600px at 12% -10%, rgba(37,99,235,0.16), transparent 55%),
+    radial-gradient(900px 500px at 88% 0%, rgba(99,102,241,0.12), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.40), rgba(255,255,255,0.00));
+}
+
+/* Full-height flex column so short pages don’t leave blank viewport space */
+body{
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+
+  background: transparent; /* let html background show through */
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 17px;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  overscroll-behavior-y: none;
+}
+
+/* Ensure Quarto wrappers stretch and stay transparent */
+#quarto-content{
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: transparent !important;
+}
+
+.page-columns,
+.content{
+  background: transparent !important;
+}
+
+/* Main content grows to fill remaining height */
+main.content{
+  flex: 1 0 auto;
+  padding: 2.25rem var(--gutter) 4.5rem;
+}
+
+/* =========================
+   1b) Site-wide width cap (centred layout + gutters)
+   ========================= */
+
+/* Cap and centre the key wrappers (covers most Quarto layouts) */
+#quarto-content,
+.page-columns,
+.content,
+main.content{
+  max-width: var(--maxw);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================
+   1c) Footer: remove “band” + keep subtle
+   ========================= */
+
+#quarto-footer,
+#quarto-footer *,
+.nav-footer,
+.nav-footer-left,
+.nav-footer-right,
+.nav-footer-center,
+footer,
+.footer{
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+#quarto-footer::before,
+#quarto-footer::after,
+.nav-footer::before,
+.nav-footer::after{
+  content: none !important;
+}
+
+#quarto-footer{
+  margin-top: auto;
+  padding: 1.25rem 0 1.5rem;
+}
+
+#quarto-footer,
+#quarto-footer p,
+#quarto-footer span{
+  color: rgba(22, 24, 29, 0.65);
+  font-size: 0.95rem;
+}
+
+#quarto-footer a{
+  color: rgba(22, 24, 29, 0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(22, 24, 29, 0.22);
+}
+#quarto-footer a:hover{
+  border-bottom-color: rgba(22, 24, 29, 0.45);
+}
+
+/* =========================
+   2) Typography
+   ========================= */
+
+p{
+  margin: 0 0 1.05rem;
+  color: rgba(22, 24, 29, 0.92);
+}
+
+a{
+  color: var(--accent);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+a:hover{ text-decoration: underline; }
+
+h1, h2, h3{
+  letter-spacing: -0.02em;
+  margin: 2.2rem 0 0.9rem;
+}
+
+h1{
+  font-size: 2.35rem;
+  line-height: 1.12;
+  margin-top: 0.5rem;
+}
+
+h2{
+  font-size: 1.55rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.35rem;
+}
+
+h3{
+  font-size: 1.12rem;
+  color: var(--muted);
+}
+
+/* =========================
+   3) Navbar polish (Quarto/Bootstrap)
+   ========================= */
+
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* solid fill so content doesn’t show through */
+  background: var(--bg) !important;
+  border-bottom: 1px solid var(--border);
+
+  /* subtle separation */
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
+}
+
+/* keep your existing centring logic */
+.navbar .container,
+.navbar .container-fluid,
+.navbar .navbar-container{
+  max-width: var(--maxw);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.navbar-brand{
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.nav-link{
+  color: rgba(22,24,29,0.78) !important;
+  font-weight: 520;
+  padding: 0.55rem 0.75rem !important;
+  border-radius: 12px;
+}
+.nav-link:hover{
+  background: rgba(42,91,215,0.08);
+  color: rgba(22,24,29,0.92) !important;
+}
+.nav-link.active{
+  background: rgba(42,91,215,0.12);
+  color: rgba(22,24,29,0.95) !important;
+}
+
+/* =========================
+   4) Lists
+   ========================= */
+
+ul, ol{ padding-left: 1.2rem; }
+li{ margin-bottom: 0.35rem; }
+
+/* =========================
+   5) Bio card (text left, photo right)
+   ========================= */
+
+.bio-card{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 1.75rem;
+  align-items: center; /* centre both columns vertically */
+}
+
+.bio-text{ align-self: start; }
+.bio-photo{ align-self: center; }
+
+/* Text block */
+.bio-text{
+  min-width: 0;
+  white-space: normal !important;
+}
+
+.bio-text p{
+  margin: 0 0 1rem;
+  line-height: 1.65;
+}
+
+.bio-text p:first-of-type{
+  font-size: 1.05rem; /* gentle “lead” */
+}
+
+/* Photo */
+.bio-photo{
+  width: 240px;
+  height: auto;
+  justify-self: end;
+  border-radius: 14px;
+  display: block;
+}
+
+/* =========================
+   6) Utility cards + pubs
+   ========================= */
+
+.card-lite{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.15rem;
+  margin: 1rem 0 1.15rem;
+}
+
+.pub{
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: 0 8px 22px rgba(10,20,30,0.06);
+  margin: 0.85rem 0;
+}
+.pub .title{ font-weight: 700; margin-bottom: 0.25rem; }
+.pub .meta{ color: var(--muted); font-size: 0.98rem; }
+.pub .links a{ margin-right: 0.65rem; font-weight: 650; }
+
+/* =========================
+   7) Working papers accordion
+   ========================= */
+
+.wp-lede{
+  width: min(900px, 92vw);
+  margin: 0 auto 1rem;
+}
+
+.wp-accordion{
+  width: min(900px, 92vw);
+  margin: 0 auto;
+}
+
+.wp-item{
+  margin: 0 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  scroll-margin-top: 6.5rem;
+}
+
+.wp-item summary{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.wp-item summary::-webkit-details-marker{
+  display: none;
+}
+
+.wp-item-heading{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.wp-item-title{
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.wp-title-toggle{
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+  text-decoration: none;
+  font: inherit;
+}
+
+.wp-title-toggle:hover{
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.wp-item-subtitle{
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.wp-item-toggle{
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(37,99,235,0.18);
+  background: rgba(37,99,235,0.08);
+  position: relative;
+}
+
+.wp-item-toggle::before,
+.wp-item-toggle::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.85rem;
+  height: 2px;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.wp-item-toggle::after{
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.wp-item[open] .wp-item-toggle::after{
+  opacity: 0;
+}
+
+.wp-item-body{
+  padding: 0 1.25rem 1.25rem;
+}
+
+.wp-item-meta{
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.wp-item-meta a{
+  font-weight: 600;
+}
+
+.wp-meta-sep{
+  margin: 0 0.35rem;
+  color: rgba(75,85,99,0.6);
+}
+
+.wp-pdf-box{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.08);
+}
+
+.wp-pdf-embed{
+  width: 100%;
+  height: 80vh;
+  border: 0 !important;
+  display: block;
+  background: #fff;
+}
+
+.wp-pdf-embed--iframe{
+  display: none;
+}
+
+.wp-pdf-fallback{
+  padding: 1rem;
+  margin: 0;
+  color: rgba(31,41,55,0.75);
+}
+
+/* =========================
+   8) Mobile responsiveness
+   ========================= */
+
+@media (max-width: 750px){
+  body{ font-size: 16px; }
+  h1{ font-size: 1.95rem; }
+
+  main.content{ padding: 1.6rem 1rem 2.5rem; }
+
+  .bio-card{
+    grid-template-columns: 1fr;
+    padding: 1.05rem;
+  }
+
+  .bio-photo{
+    width: min(65vw, 200px);
+    height: auto;
+    margin: 0 auto 0.5rem;
+    border-radius: 16px;
+    justify-self: center;
+  }
+
+  .wp-item summary{
+    padding: 1rem;
+  }
+
+  .wp-item-body{
+    padding: 0 1rem 1rem;
+  }
+
+  .wp-pdf-embed--object{
+    display: none;
+  }
+
+  .wp-pdf-embed--iframe{
+    display: block;
+  }
+
+  .wp-pdf-embed{
+    height: 72vh;
+  }
+
+  /* Slightly tighter gutters on small screens */
+  :root{ --gutter: 1rem; }
+}
+
+/* Mobile: iOS Safari can jitter/“track” fixed gradients while scrolling */
+@media (max-width: 750px){
+  body::before{
+    /* simplest + most stable fix */
+    position: absolute;
+    inset: 0;
+
+    /* slightly softer gradient so it doesn’t dominate the screen */
+    background:
+      radial-gradient(700px 420px at 50% -10%, rgba(37,99,235,0.10), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.00));
+  }
+}
