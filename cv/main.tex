@@ -3,14 +3,36 @@
 \usepackage[left=0.4in,top=0.4in,right=0.4in,bottom=0.4in]{geometry}
 
 % --- Sort newest first by full date (YYYY-MM-DD), then author, then title
-\DeclareSortingScheme{dateydnt}{%
-  \sort[direction=descending]{%
-    \field{sortdate}%
-    \field{date}%
-    \field{year}%
+\DeclareSortingTemplate{dateydnt}{%
+  \sort{%
+    \field{presort}%
   }%
-  \sort{\name{author}}%
-  \sort{\field{title}}%
+  \sort[final]{%
+    \field{sortkey}%
+  }%
+  \sort[direction=descending]{%
+    \field{sortyear}%
+    \field{year}%
+    \literal{9999}%
+  }%
+  \sort[direction=descending]{%
+    \field{month}%
+  }%
+  \sort[direction=descending]{%
+    \field{day}%
+  }%
+  \sort{%
+    \field{sortname}%
+    \field{author}%
+    \field{editor}%
+    \field{translator}%
+    \field{sorttitle}%
+    \field{title}%
+  }%
+  \sort{%
+    \field{sorttitle}%
+    \field{title}%
+  }%
 }
 
 % Use date if present (for sorting/labeling); fallback to year
@@ -117,8 +139,8 @@ Three year appointment as the \textit{Sir Terry Leahy Fellow of Urban and Region
 
 \begin{rSection}{Education}
 
-{\bf Land Economy, PhD}, St Catharine's College, University of Cambridge \hfill {2022 -- 2026 (expected)}\\
-\textit{In progress} \\
+{\bf Land Economy, PhD}, St Catharine's College, University of Cambridge \hfill {1 Oct 2022 -- 22 May 2026}\\
+\textit{Submitted 26 September 2025; graduation 22 May 2026} \\
 \vspace{-1.5em}
 \begin{itemize}
   \itemsep -3pt {} 
